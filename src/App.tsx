@@ -1,12 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Homepage from './components/Homepage';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+
+import "./App.css";
+import Homepage from "./components/Homepage";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
-      <Homepage />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact>
+            <Homepage />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
