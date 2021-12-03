@@ -1,3 +1,47 @@
+h1 {
+  margin: 0;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffde00;
+  height: 45px;
+}
+
 .Header .logo {
   width: 40px;
+  height: 40px;
+}
+
+.Header .profile {
+  display: flex;
+}
+
+.Header .avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.drop-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.Header .drop-content {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+
+.dropdown:hover .drop-content {
+  display: block;
+  position: absolute;
+  float: inline-end;
 }
