@@ -1,12 +1,13 @@
 import "./Homepage.css";
-import { signInWithGoogle, signOut } from "../firebaseConfig";
+import { useContext } from "react";
+import ProfilePopup from "./ProfilePopup";
+import AuthContext from "../context/AuthContext";
 
 const Homepage = () => {
+  const { registeredUser } = useContext(AuthContext);
+
   return (
-    <div className="Homepage">
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
-      <button onClick={signOut}>Sign out</button>
-    </div>
+    <div className="Homepage">{!registeredUser ? <ProfilePopup /> : null}</div>
   );
 };
 
