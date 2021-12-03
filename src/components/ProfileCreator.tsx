@@ -7,7 +7,6 @@ import { storage } from "../firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const ProfileCreator = () => {
-  // const [username, setUsername]
   const { user } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -16,7 +15,8 @@ const ProfileCreator = () => {
     e.preventDefault();
     const profile: Profile = {
       uid: user!.uid,
-      avatar: fileInputRef,
+      avatar:
+        "https://firebasestorage.googleapis.com/v0/b/pokemon-trivia-project.appspot.com/o/defaultProfilePic.jpg?alt=media&token=d20caf9d-8519-4300-a7fb-03c69844b481",
       username,
     };
     const files = fileInputRef.current?.files;
@@ -37,23 +37,21 @@ const ProfileCreator = () => {
     <form className="ProfileCreator" onSubmit={submitHandler}>
       <label htmlFor="username">
         Create a Username
-        <input type="text" name="username" id="username" />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
       </label>
       <label htmlFor=""></label>
       <input ref={fileInputRef} type="file" />
+      <button>Submit</button>
     </form>
   );
 };
 
 export default ProfileCreator;
-function ref(storage: any, name: string) {
-  throw new Error("Function not implemented.");
-}
-
-function uploadBytes(storageRef: void, file: File) {
-  throw new Error("Function not implemented.");
-}
-
-function getDownloadURL(ref: any) {
-  throw new Error("Function not implemented.");
-}

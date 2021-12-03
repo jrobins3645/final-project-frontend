@@ -4,7 +4,7 @@ import Profile from "../models/Profile";
 const baseURL: string = process.env.REACT_APP_API_URL || "";
 
 export const addProfile = (profile: Profile): Promise<Profile> =>
-  axios.post(baseURL, profile).then((response) => response.data);
+  axios.post(`${baseURL}/profiles`, profile).then((response) => response.data);
 
 export const getProfile = (uid: string): Promise<Profile[]> => {
   return axios

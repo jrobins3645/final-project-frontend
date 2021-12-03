@@ -8,7 +8,7 @@ import { getProfile } from "../services/ProfileService";
 function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [registeredUser, setRegisteredUser] = useState(false);
+  // const [registeredUser, setRegisteredUser] = useState(false);
 
   useEffect(() => {
     // useEffect to only register once at start
@@ -17,21 +17,19 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
       if (newUser) {
         getProfile(newUser.uid).then((array) => {
           if (array.length) {
-            setRegisteredUser(true);
+            // setRegisteredUser(true);
             setProfile(array[0]);
             console.log(profile);
           }
         });
       } else {
-        setRegisteredUser(false);
+        // setRegisteredUser(false);
         setProfile(null);
       }
     });
   }, [profile]);
   return (
-    <AuthContext.Provider
-      value={{ user, profile, setProfile, registeredUser, setRegisteredUser }}
-    >
+    <AuthContext.Provider value={{ user, profile, setProfile }}>
       {children}
     </AuthContext.Provider>
   );
