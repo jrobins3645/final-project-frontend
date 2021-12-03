@@ -1,23 +1,24 @@
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import { signOut } from "../firebaseConfig";
+import pokeballLogo from "../images/pokeball.png";
 import "./Header.css";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { profile, registeredUser } = useContext(AuthContext);
 
   return (
     <div className="Header">
-      <img src="pokeballpng.png" alt="logo" />
-      <h1>Hangman</h1>
+      <img src={pokeballLogo} alt="logo" className="logo" />
+      <h1>Pokemon Trivia</h1>
       <i className="far fa-bars"></i>
 
-      {user ? (
-        <div>
-          <p>{user.displayName}</p>
+      {registeredUser ? (
+        <div className="profile">
+          <button onClick={signOut}>Sign out</button>
+          {profile ? <p>{profile.username}</p> : <p>Guest</p>}
         </div>
-      ) : (
-        <p>Guest</p>
-      )}
+      ) : null}
     </div>
   );
 };

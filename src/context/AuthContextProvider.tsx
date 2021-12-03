@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { User } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import AuthContext from "./AuthContext";
@@ -15,23 +15,19 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
     return auth.onAuthStateChanged((newUser) => {
       setUser(newUser);
       if (newUser) {
-        console.log(newUser);
         getProfile(newUser.uid).then((array) => {
           if (array.length) {
             setRegisteredUser(true);
             setProfile(array[0]);
             console.log(profile);
-          } else {
-            console.log("No user in database.");
           }
         });
       } else {
-        console.log("anything");
         setRegisteredUser(false);
         setProfile(null);
       }
     });
-  }, []);
+  }, [profile]);
   return (
     <AuthContext.Provider
       value={{ user, profile, setProfile, registeredUser, setRegisteredUser }}
