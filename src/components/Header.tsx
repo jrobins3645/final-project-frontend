@@ -18,22 +18,24 @@ const Header = () => {
           {profile ? (
             <div className="profile">
               <p>{profile.username}</p>
-              <img src={profile.avatar} alt="profile avatar" className="avatar" />
+              <img
+                src={profile.avatar}
+                alt="profile avatar"
+                className="avatar"
+              />
             </div>
           ) : (
             <p>Guest</p>
           )}
         </div>
       ) : null}
-      {user && !profile && <ProfileCreator />}
       <div className="dropdown">
         <button className="drop-button">
           <i className="fas fa-bars"></i>
         </button>
         <div className="drop-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#"><button onClick={signOut}>Sign out</button></a>
+          <a href="">My Account</a>
+          <button onClick={signOut}>Sign out</button>
         </div>
       </div>
     </div>

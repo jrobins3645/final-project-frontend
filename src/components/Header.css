@@ -37,6 +37,7 @@ h1 {
 .Header .drop-content {
   display: none;
   position: absolute;
+  background-color: yellow;
   right: 0;
 }
 
