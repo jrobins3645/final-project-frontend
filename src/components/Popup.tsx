@@ -1,9 +1,9 @@
 import { signInWithGoogle } from "../firebaseConfig";
-import "./LoggedOut.css";
+import "./Popup.css";
 
-const LoggedOut = () => {
+const Popup = () => {
   return (
-    <div className="LoggedOut">
+    <div className="Log-In">
       <button onClick={signInWithGoogle}>Sign in with Google</button>
       <p>or</p>
       <button>Continue as Guest</button>
@@ -11,4 +11,4 @@ const LoggedOut = () => {
   );
 };
 
-export default LoggedOut;
+export default Popup;

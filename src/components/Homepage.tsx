@@ -1,12 +1,12 @@
 import "./Homepage.css";
 import { useContext } from "react";
-import ProfilePopup from "./ProfilePopup";
 import AuthContext from "../context/AuthContext";
+import Popup from "./Popup";
 
 const Homepage = () => {
-  const { profile, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-  return <div className="Homepage">{!user ? <ProfilePopup /> : null}</div>;
+  return <div className="Homepage">{!user ? <Popup /> : null}</div>;
 };
 
 export default Homepage;
