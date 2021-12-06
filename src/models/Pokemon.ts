@@ -3,6 +3,14 @@ interface Sprites {
 }
 
 interface Sprites {
+  other: Other;
+}
+
+interface Other {
+  "official-artwork": Artwork;
+}
+
+interface Artwork {
   front_default: string;
 }
 

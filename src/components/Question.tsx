@@ -9,8 +9,9 @@ const Question = ({ currentPokemon }: Props) => {
   return (
     <div className="Question">
       <p>Name this Pokemon.</p>
+      <p>({currentPokemon?.name})</p>
       <img
-        src={currentPokemon?.sprites.front_default}
+        src={currentPokemon?.sprites.other["official-artwork"].front_default}
         alt="Picture of Pokemon."
       />
     </div>
