@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { signOut } from "../firebaseConfig";
 import pokeballLogo from "../images/pokeball.png";
@@ -9,7 +10,9 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <img src={pokeballLogo} alt="logo" className="logo" />
+      <Link to="/">
+        <img src={pokeballLogo} alt="logo" className="logo" />
+      </Link>
       <h1>Pokemon Trivia</h1>
 
       {profile ? (
@@ -33,8 +36,14 @@ const Header = () => {
           <i className="fas fa-bars"></i>
         </button>
         <div className="drop-content">
-          <a href="#">My Account</a>
-          <button onClick={signOut}>Sign out</button>
+          <Link to="/leaderboard">Leaderboard</Link>
+          <Link to="/about">About</Link>
+          {profile ? (
+            <>
+              <Link to={`/profiles/${profile.uid}`}>My Account</Link>
+              <button onClick={signOut}>Sign out</button>
+            </>
+          ) : null}
         </div>
       </div>
     </div>
