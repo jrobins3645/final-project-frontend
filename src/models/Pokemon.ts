@@ -2,11 +2,11 @@ interface Sprites {
   front_default: string;
 }
 
-interface Forms {
-  name: string;
+interface Sprites {
+  front_default: string;
 }
 
 export default interface Pokemon {
-  forms: Forms[];
-  sprites: Sprites[];
+  name: string;
+  sprites: Sprites;
 }
