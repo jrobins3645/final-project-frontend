@@ -3,10 +3,9 @@ import AuthContext from "../context/AuthContext";
 import { signOut } from "../firebaseConfig";
 import pokeballLogo from "../images/pokeball.png";
 import "./Header.css";
-import ProfileCreator from "./ProfileCreator";
 
 const Header = () => {
-  const { profile, user } = useContext(AuthContext);
+  const { profile } = useContext(AuthContext);
 
   return (
     <div className="Header">
@@ -34,7 +33,7 @@ const Header = () => {
           <i className="fas fa-bars"></i>
         </button>
         <div className="drop-content">
-          <a href="">My Account</a>
+          <a href="#">My Account</a>
           <button onClick={signOut}>Sign out</button>
         </div>
       </div>
