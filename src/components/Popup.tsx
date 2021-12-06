@@ -9,7 +9,7 @@ const Popup = () => {
   return (
     <div className="Log-In">
       {user && !profile && <ProfileCreator />}
-      {!profile ? (
+      {!user ? (
         <div className="sign-in">
           <button onClick={signInWithGoogle}>Sign in with Google</button>
           <p>or</p>

@@ -4,11 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./context/AuthContextProvider";
+import PokemonContext from "./context/PokemonContext";
+import PokemonContextProvider from "./context/PokemonContexProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      <PokemonContextProvider>
+        <App />
+      </PokemonContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
