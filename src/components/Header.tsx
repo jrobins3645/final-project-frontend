@@ -6,7 +6,7 @@ import pokeballLogo from "../images/pokeball.png";
 import "./Header.css";
 
 const Header = () => {
-  const { profile } = useContext(AuthContext);
+  const { profile, user } = useContext(AuthContext);
 
   return (
     <div className="Header">
@@ -38,9 +38,9 @@ const Header = () => {
         <div className="drop-content">
           <Link to="/leaderboard">Leaderboard</Link>
           <Link to="/about">About</Link>
-          {profile ? (
+          {user ? (
             <>
-              <Link to={`/profiles/${profile.uid}`}>My Account</Link>
+              <Link to={`/profiles/${profile?.uid}`}>My Account</Link>
               <button onClick={signOut}>Sign out</button>
             </>
           ) : null}
