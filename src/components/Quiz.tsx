@@ -5,6 +5,7 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import PokemonContext from "../context/PokemonContext";
 import { getPokemonById } from "../services/PokemonService";
 import { addScore } from "../services/ScoreService";
+import Score from "../models/Score";
 import AuthContext from "../context/AuthContext";
 
 const Quiz = () => {
@@ -15,22 +16,29 @@ const Quiz = () => {
     questionsAnswered,
     setQuestionsAnswered,
   } = useContext(PokemonContext);
-
   const { profile } = useContext(AuthContext);
 
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
-  const [timer, setTimer] = useState(100);
+  const [timer, setTimer] = useState(20);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    if (timer > 0) {
+    if (timer) {
       setTimeout(() => {
         setTimer((prev) => prev - 1);
       }, 1000);
     } else {
-      setScore(questionsCorrect * 100 * (questionsCorrect / questionsAnswered));
+      if (questionsAnswered) {
+        let userScore: Score = {
+          uid: profile!.uid,
+          username: profile!.username,
+          avatar: profile!.avatar,
+          score: score,
+        };
+        addScore(userScore);
+      }
     }
   }, [timer]);
 
@@ -42,7 +50,9 @@ const Quiz = () => {
       setQuestionsCorrect((prev) => prev + 1);
     }
     console.log(questionsCorrect, "correct");
-
+    if (questionsAnswered) {
+      setScore(questionsCorrect * 100 * (questionsCorrect / questionsAnswered));
+    }
     setAnswer("");
   };
 
@@ -50,7 +60,7 @@ const Quiz = () => {
     getPokemonById(idList[counter]).then((response) =>
       setCurrentPokemon(response)
     );
-  }, [counter]);
+  }, [counter, idList]);
 
   return (
     <div className="Quiz">
@@ -61,6 +71,8 @@ const Quiz = () => {
             {questionsAnswered}
             <p>correct</p>
             {questionsCorrect}
+            <p>score</p>
+            {score}
           </div>
           <div>{timer}</div>
           <form onSubmit={submitHandler}>
@@ -80,7 +92,7 @@ const Quiz = () => {
           <input
             type="button"
             value="Quit Quiz"
-            onClick={() => (window.location.href = window.location.href)}
+            onClick={() => window.location.reload()}
           />
         </>
       ) : (
@@ -89,6 +101,14 @@ const Quiz = () => {
           {questionsAnswered}
           <p>correct</p>
           {questionsCorrect}
+          <p>score</p>
+          {score}
+          <p></p>
+          <input
+            type="button"
+            value="Restart"
+            onClick={() => window.location.reload()}
+          />
         </div>
       )}
     </div>
