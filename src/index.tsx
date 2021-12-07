@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./context/AuthContextProvider";
-import PokemonContext from "./context/PokemonContext";
 import PokemonContextProvider from "./context/PokemonContextProvider";
 
 ReactDOM.render(

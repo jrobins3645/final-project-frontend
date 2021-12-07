@@ -12,7 +12,7 @@ const Question = ({ currentPokemon }: Props) => {
       <p>({currentPokemon?.name})</p>
       <img
         src={currentPokemon?.sprites.other["official-artwork"].front_default}
-        alt="Picture of Pokemon."
+        alt="Pokemon"
       />
     </div>
   );

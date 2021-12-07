@@ -7,13 +7,15 @@ interface Props {
 
 const PokemonContextProvider = ({ children }: Props) => {
   const [idList, setIdList] = useState<number[]>([]);
+  const [questionsAnswered, setQuestionsAnswered] = useState<number>(1);
+  const [questionsCorrect, setQuestionsCorrect] = useState<number>(1);
 
   const shuffle = (array: number[]) => {
     let currentIndex = array.length,
       randomIndex;
 
     // While there remain elements to shuffle...
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
@@ -40,7 +42,15 @@ const PokemonContextProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <PokemonContext.Provider value={{ idList }}>
+    <PokemonContext.Provider
+      value={{
+        idList,
+        questionsAnswered,
+        setQuestionsAnswered,
+        questionsCorrect,
+        setQuestionsCorrect,
+      }}
+    >
       {children}
     </PokemonContext.Provider>
   );
