@@ -24,6 +24,17 @@ const Quiz = () => {
   const [timer, setTimer] = useState(20);
   const [score, setScore] = useState(0);
 
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    setQuestionsAnswered((prev) => prev + 1);
+    console.log(questionsAnswered, "answered");
+    if (answer === currentPokemon?.name) {
+      setQuestionsCorrect((prev) => prev + 1);
+      console.log(questionsCorrect, "correct");
+    }
+    setAnswer("");
+  };
+
   useEffect(() => {
     if (timer) {
       setTimeout(() => {
@@ -42,25 +53,14 @@ const Quiz = () => {
     }
   }, [timer]);
 
-  const submitHandler = (e: FormEvent) => {
-    e.preventDefault();
-    setQuestionsAnswered((prev) => prev + 1);
-    console.log(questionsAnswered, "answered");
-    if (answer === currentPokemon?.name) {
-      setQuestionsCorrect((prev) => prev + 1);
-    }
-    console.log(questionsCorrect, "correct");
-    if (questionsAnswered) {
-      setScore(questionsCorrect * 100 * (questionsCorrect / questionsAnswered));
-    }
-    setAnswer("");
-  };
-
   useEffect(() => {
     getPokemonById(idList[counter]).then((response) =>
       setCurrentPokemon(response)
     );
-  }, [counter, idList]);
+    if (questionsAnswered) {
+      setScore(questionsCorrect * 100 * (questionsCorrect / questionsAnswered));
+    }
+  }, [counter, idList, questionsAnswered, timer]);
 
   return (
     <div className="Quiz">

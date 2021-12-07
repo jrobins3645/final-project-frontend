@@ -4,20 +4,26 @@ import "./Profile.css";
 
 const Profile = () => {
   const { profile } = useContext(AuthContext);
-  const [deleteAccount, setDeleteAccount] = useState(false);
+  const [requestDelete, setRequestDelete] = useState(false);
+
+  const deleteAccount = () => {
+    setRequestDelete(false);
+  };
 
   return (
     <div className="Profile">
       <h2>Username: {profile?.username}</h2>
-      <button onClick={() => setDeleteAccount(true)}>Delete Account</button>
-      {deleteAccount ? (
+      <button onClick={() => setRequestDelete(true)}>Delete Account</button>
+      {requestDelete ? (
         <div className="verify-delete-container">
           <p>
             Are you absolutely sure you want to delete your account? All records
             will be erased.
           </p>
-          <button>YES, delete my account!</button>
-          <button onClick={() => setDeleteAccount(false)}>
+          <button onClick={() => deleteAccount()}>
+            YES, delete my account!
+          </button>
+          <button onClick={() => setRequestDelete(false)}>
             NO, I made a horrible mistake!
           </button>
         </div>
