@@ -13,7 +13,7 @@ interface Props {
 }
 
 const ProfileCreator = ({ score }: Props) => {
-  const { user, guestPopup } = useContext(AuthContext);
+  const { user, setProfile } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -34,16 +34,18 @@ const ProfileCreator = ({ score }: Props) => {
         getDownloadURL(snapshot.ref).then((response) => {
           console.log(response);
           profile.avatar = response;
-          addProfile(profile);
-          if (guestPopup) {
-            const newScore: Score = {
-              score,
-              username,
-              avatar: response,
-              uid: user!.uid,
-            };
-            addScore(newScore);
-          }
+          addProfile(profile).then(() => {
+            setProfile(profile);
+          });
+          // if (guestPopup) {
+          //   const newScore: Score = {
+          //     score,
+          //     username,
+          //     avatar: response,
+          //     uid: user!.uid,
+          //   };
+          //   addScore(newScore);
+          // }
         });
       });
     }
