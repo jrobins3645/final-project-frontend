@@ -1,11 +1,14 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { signInWithGoogle } from "../firebaseConfig";
 import "./Popup.css";
 import ProfileCreator from "./ProfileCreator";
 
+
 const Popup = () => {
   const { user, profile } = useContext(AuthContext);
+
   return (
     <div className="popup">
       {user && !profile && <ProfileCreator />}
@@ -13,7 +16,7 @@ const Popup = () => {
         <div className="sign-in">
           <button onClick={signInWithGoogle}>Sign in with Google</button>
           <p>or</p>
-          <button>Continue as Guest</button>
+            <button>Continue as Guest</button>
         </div>
       ) : null}
     </div>

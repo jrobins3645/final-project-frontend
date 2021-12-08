@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import { signOut } from "../firebaseConfig";
+import { signInWithGoogle, signOut } from "../firebaseConfig";
 import pokeballLogo from "../images/pokeball.png";
+import defaultProfilePic from "../images/defaultProfilePic.jpg";
 import "./Header.css";
 
 const Header = () => {
@@ -14,23 +15,18 @@ const Header = () => {
         <img src={pokeballLogo} alt="logo" className="logo" />
       </Link>
       <h1>Pokemon Trivia</h1>
-
       {profile ? (
         <div className="profile">
-          {profile ? (
-            <div className="profile">
-              <p>{profile.username}</p>
-              <img
-                src={profile.avatar}
-                alt="profile avatar"
-                className="avatar"
-              />
-            </div>
-          ) : (
-            <p>Guest</p>
-          )}
+          <p>{profile.username}</p>
+          <img src={profile.avatar} alt="profile avatar" className="avatar" />
         </div>
-      ) : null}
+      ) : (
+        <div className="profile">
+          <p>Guest</p>
+          <img src={defaultProfilePic} alt="Default" className="avatar" />
+          <button onClick={signInWithGoogle}>Sign In</button>
+        </div>
+      )}
       <div className="dropdown">
         <button className="drop-button">
           <i className="fas fa-bars"></i>

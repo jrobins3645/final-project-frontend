@@ -7,6 +7,8 @@ import { getPokemonById } from "../services/PokemonService";
 import { addScore } from "../services/ScoreService";
 import Score from "../models/Score";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
+import Popup from "./Popup";
 
 const Quiz = () => {
   const {
@@ -18,11 +20,13 @@ const Quiz = () => {
   } = useContext(PokemonContext);
   const { profile } = useContext(AuthContext);
 
+  const [popup, setPopup] = useState(true);
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
   const [timer, setTimer] = useState(20);
   const [score, setScore] = useState(0);
+  const [guest, setGuest] = useState(false);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -40,7 +44,7 @@ const Quiz = () => {
       setTimeout(() => {
         setTimer((prev) => prev - 1);
       }, 1000);
-    } else {
+    } else if (profile) {
       if (questionsAnswered) {
         let userScore: Score = {
           uid: profile!.uid,
@@ -50,6 +54,8 @@ const Quiz = () => {
         };
         addScore(userScore);
       }
+    } else {
+      setGuest(true);
     }
   }, [timer]);
 
@@ -89,11 +95,9 @@ const Quiz = () => {
               Next Question
             </button>
           </form>
-          <input
-            type="button"
-            value="Quit Quiz"
-            onClick={() => window.location.reload()}
-          />
+          <Link to="/">
+            <button>Quit Quiz</button>
+          </Link>
         </>
       ) : (
         <div>
@@ -111,6 +115,7 @@ const Quiz = () => {
           />
         </div>
       )}
+      {guest && !timer ? <Popup /> : null}
     </div>
   );
 };

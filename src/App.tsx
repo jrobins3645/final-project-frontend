@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Profile from "./components/Profile";
 import Leaderboard from "./components/Leaderboard";
 import About from "./components/About";
+import Quiz from "./components/Quiz";
 
 function App() {
   return (
@@ -22,8 +23,11 @@ function App() {
           <Route path="/leaderboard">
             <Leaderboard />
           </Route>
-          <Route path="/about">
+          <Route path="/about" exact>
             <About />
+          </Route>
+          <Route path="/quiz" exact>
+            <Quiz />
           </Route>
         </Switch>
       </Router>
