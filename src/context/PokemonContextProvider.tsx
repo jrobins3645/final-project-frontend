@@ -7,8 +7,8 @@ interface Props {
 
 const PokemonContextProvider = ({ children }: Props) => {
   const [idList, setIdList] = useState<number[]>([]);
-  const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
-  const [questionsCorrect, setQuestionsCorrect] = useState<number>(0);
+  const [questionsAnswered, setQuestionsAnswered] = useState<number>(1);
+  const [questionsCorrect, setQuestionsCorrect] = useState<number>(1);
 
   const shuffle = (array: number[]) => {
     let currentIndex = array.length,
