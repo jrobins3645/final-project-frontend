@@ -11,3 +11,9 @@ export const getProfile = (uid: string): Promise<Profile[]> => {
     .get(`${baseURL}/profiles/${encodeURIComponent(uid)}`)
     .then((response) => response.data);
 };
+
+export const deleteProfile = (uid: string): Promise<void> => {
+  return axios
+    .delete(`${baseURL}/profiles/${encodeURIComponent(uid)}`)
+    .then((response) => response.data);
+};

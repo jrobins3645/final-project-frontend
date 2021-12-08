@@ -11,3 +11,15 @@ export const getAllScores = (): Promise<Score[]> =>
     console.log(response);
     return response.data;
   });
+
+export const getHighscore = (uid: string) => {
+  return axios
+    .get(`${baseURL}/scores/${encodeURIComponent(uid)}`)
+    .then((response) => response.data);
+};
+
+export const deleteScores = (uid: string): Promise<void> => {
+  return axios
+    .delete(`${baseURL}/scores/${encodeURIComponent(uid)}`)
+    .then((response) => response.data);
+};
