@@ -8,6 +8,7 @@ import { getProfile } from "../services/ProfileService";
 function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [guestPopup, setGuestPopup] = useState<boolean>(false);
 
   // const [registeredUser, setRegisteredUser] = useState(false);
 
@@ -30,7 +31,9 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
     });
   }, []);
   return (
-    <AuthContext.Provider value={{ user, profile, setProfile }}>
+    <AuthContext.Provider
+      value={{ user, profile, setProfile, guestPopup, setGuestPopup }}
+    >
       {children}
     </AuthContext.Provider>
   );

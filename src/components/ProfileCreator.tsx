@@ -5,14 +5,21 @@ import { addProfile } from "../services/ProfileService";
 import "./ProfileCreator.css";
 import { storage } from "../firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import Score from "../models/Score";
+import { addScore } from "../services/ScoreService";
 
-const ProfileCreator = () => {
-  const { user } = useContext(AuthContext);
+interface Props {
+  score: number;
+}
+
+const ProfileCreator = ({ score }: Props) => {
+  const { user, guestPopup } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
+
     const profile: Profile = {
       uid: user!.uid,
       avatar:
@@ -28,6 +35,15 @@ const ProfileCreator = () => {
           console.log(response);
           profile.avatar = response;
           addProfile(profile);
+          if (guestPopup) {
+            const newScore: Score = {
+              score,
+              username,
+              avatar: response,
+              uid: user!.uid,
+            };
+            addScore(newScore);
+          }
         });
       });
     }

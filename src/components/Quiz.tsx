@@ -18,15 +18,12 @@ const Quiz = () => {
     questionsAnswered,
     setQuestionsAnswered,
   } = useContext(PokemonContext);
-  const { profile } = useContext(AuthContext);
-
-  const [popup, setPopup] = useState(true);
+  const { profile, guestPopup, setGuestPopup } = useContext(AuthContext);
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
   const [timer, setTimer] = useState(20);
   const [score, setScore] = useState(0);
-  const [guest, setGuest] = useState(false);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -55,7 +52,7 @@ const Quiz = () => {
         addScore(userScore);
       }
     } else {
-      setGuest(true);
+      setGuestPopup(true);
     }
   }, [timer]);
 
@@ -85,6 +82,7 @@ const Quiz = () => {
             <Question currentPokemon={currentPokemon!} />
             <label htmlFor="answer">Answer Here:</label>
             <input
+              autoComplete="off"
               type="text"
               name="answer"
               id="answer"
@@ -115,7 +113,7 @@ const Quiz = () => {
           />
         </div>
       )}
-      {guest && !timer ? <Popup /> : null}
+      {guestPopup && !timer && <Popup score={score} />}
     </div>
   );
 };

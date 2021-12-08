@@ -5,10 +5,14 @@ export interface AuthContextModel {
   user: User | null;
   profile: Profile | null;
   setProfile: (profile: Profile) => void;
+  guestPopup: boolean;
+  setGuestPopup: (boolean: boolean) => void;
 }
 const defaultValue: AuthContextModel = {
   user: null,
   profile: null,
+  guestPopup: false,
+  setGuestPopup: () => {},
   setProfile: () => {},
 };
 const AuthContext = createContext(defaultValue);
