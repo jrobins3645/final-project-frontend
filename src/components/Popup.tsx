@@ -7,7 +7,7 @@ import ProfileCreator from "./ProfileCreator";
 const Popup = () => {
   const { user, profile } = useContext(AuthContext);
   return (
-    <div className="Log-In">
+    <div className="popup">
       {user && !profile && <ProfileCreator />}
       {!user ? (
         <div className="sign-in">
