@@ -8,6 +8,7 @@ import { getProfile } from "../services/ProfileService";
 function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+
   // const [registeredUser, setRegisteredUser] = useState(false);
 
   useEffect(() => {

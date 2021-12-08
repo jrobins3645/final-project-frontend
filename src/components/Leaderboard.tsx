@@ -15,11 +15,11 @@ const Leaderboard = () => {
 
   return (
     <div className="Leaderboard">
-      <p>huzzah</p>
       <ol>
         {scores.map((score) => {
           return (
-            <li>
+            <li className="list-item">
+              <img src={score.avatar} alt="Avatar" className="avatar"/>
               {score.username} has {score.score} points
             </li>
           );

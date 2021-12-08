@@ -1,0 +1,9 @@
+.Homepage {
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-container {
+  border: 1px black solid;
+  width: 200px;
+}
