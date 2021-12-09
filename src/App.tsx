@@ -7,6 +7,8 @@ import Profile from "./components/Profile";
 import Leaderboard from "./components/Leaderboard";
 import About from "./components/About";
 import Quiz from "./components/Quiz";
+import { useContext } from "react";
+import AuthContext from "./context/AuthContext";
 
 function App() {
   return (

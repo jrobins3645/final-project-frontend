@@ -9,13 +9,13 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [guestPopup, setGuestPopup] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0)
 
   // const [registeredUser, setRegisteredUser] = useState(false);
 
   useEffect(() => {
     // useEffect to only register once at start
     return auth.onAuthStateChanged((newUser) => {
-      console.log(newUser);
       setUser(newUser);
       if (newUser) {
         getProfile(newUser.uid).then((array) => {
@@ -33,7 +33,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
   }, []);
   return (
     <AuthContext.Provider
-      value={{ user, profile, setProfile, guestPopup, setGuestPopup }}
+      value={{ user, profile, setProfile, guestPopup, setGuestPopup, score, setScore }}
     >
       {children}
     </AuthContext.Provider>

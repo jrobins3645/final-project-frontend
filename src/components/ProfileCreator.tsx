@@ -8,11 +8,8 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Score from "../models/Score";
 import { addScore } from "../services/ScoreService";
 
-interface Props {
-  score: number;
-}
 
-const ProfileCreator = ({ score }: Props) => {
+const ProfileCreator = () => {
   const { user, setProfile } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);

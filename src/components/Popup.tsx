@@ -6,12 +6,10 @@ import { addScore } from "../services/ScoreService";
 import "./Popup.css";
 import ProfileCreator from "./ProfileCreator";
 
-interface Props {
-  score: number;
-}
 
-const Popup = ({ score }: Props) => {
-  const { user, profile, guestPopup, setGuestPopup } = useContext(AuthContext);
+
+const Popup = () => {
+  const { user, profile, score, setGuestPopup } = useContext(AuthContext);
   const sendUserScore = () => {
     if (user && profile) {
       addScore({
@@ -31,7 +29,7 @@ const Popup = ({ score }: Props) => {
 
   return (
     <div className="popup">
-      {user && !profile && <ProfileCreator score={score} />}
+      {user && !profile && <ProfileCreator />}
       {!user ? (
         <div className="sign-in">
           <button onClick={signInWithGoogle}>Sign in with Google</button>
