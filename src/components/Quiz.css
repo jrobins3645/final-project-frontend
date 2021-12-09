@@ -1,0 +1,10 @@
+.Quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Quiz .scoring {
+  display: flex;
+  flex-direction: row;
+}
