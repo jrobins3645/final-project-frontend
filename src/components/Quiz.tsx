@@ -18,14 +18,14 @@ const Quiz = () => {
     questionsAnswered,
     setQuestionsAnswered,
   } = useContext(PokemonContext);
-  
+
   const { profile, guestPopup, setGuestPopup, score, setScore } =
     useContext(AuthContext);
-  
+
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
-  const [timer, setTimer] = useState(20);
+  const [timer, setTimer] = useState(5);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -71,13 +71,11 @@ const Quiz = () => {
     <div className="Quiz">
       {timer ? (
         <>
-          <div>
-            <p>answered</p>
-            {questionsAnswered}
-            <p>correct</p>
-            {questionsCorrect}
-            <p>score</p>
-            {score}
+          <div className="scoring">
+            <p>
+              Question: {questionsAnswered + 1} Correct: {questionsCorrect}{" "}
+              Current Score: {score}
+            </p>
           </div>
           <div>{timer}</div>
           <form onSubmit={submitHandler}>

@@ -8,15 +8,14 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Score from "../models/Score";
 import { addScore } from "../services/ScoreService";
 
-
 const ProfileCreator = () => {
-  const { user, setProfile } = useContext(AuthContext);
+  const { user, setProfile, setGuestPopup } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-
+    setGuestPopup(false);
     const profile: Profile = {
       uid: user!.uid,
       avatar:

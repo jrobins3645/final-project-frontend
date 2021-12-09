@@ -8,8 +8,7 @@ interface Props {
 const Question = ({ currentPokemon }: Props) => {
   return (
     <div className="Question">
-      <p>Name this Pokemon.</p>
-      <p>({currentPokemon?.name})</p>
+      <p>Who's that pokemon?!?</p>
       <img
         src={currentPokemon?.sprites.other["official-artwork"].front_default}
         alt="Pokemon"
