@@ -24,7 +24,6 @@ const Header = () => {
       </div>
 
       <div className="profile-menu">
-        {" "}
         {profile ? (
           <div className="profile">
             <p>{profile.username}</p>
@@ -37,7 +36,7 @@ const Header = () => {
             <button onClick={signInWithGoogle}>Sign In</button>
           </div>
         )}
-        <div className="dropdown">
+        <nav className="dropdown">
           <i className="fas fa-bars"></i>
           <div className="drop-content">
             <div className="menu-item">
@@ -57,7 +56,7 @@ const Header = () => {
               </>
             ) : null}
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );
