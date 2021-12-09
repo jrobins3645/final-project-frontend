@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import React, { createContext } from "react";
 
 interface PokemonContextModel {
   idList: number[];
@@ -6,6 +6,7 @@ interface PokemonContextModel {
   questionsCorrect: number;
   setQuestionsAnswered: React.Dispatch<React.SetStateAction<number>>;
   setQuestionsCorrect: React.Dispatch<React.SetStateAction<number>>;
+  shuffledPokemon: () => void;
 }
 
 const defaultValues: PokemonContextModel = {
@@ -14,6 +15,7 @@ const defaultValues: PokemonContextModel = {
   questionsCorrect: 0,
   setQuestionsAnswered: () => {},
   setQuestionsCorrect: () => {},
+  shuffledPokemon: () => {},
 };
 
 const PokemonContext = createContext(defaultValues);

@@ -30,16 +30,15 @@ const PokemonContextProvider = ({ children }: Props) => {
     return array;
   };
 
-  useEffect(() => {
+  const shuffledPokemon = () => {
     const numberArray = [];
     for (let i = 1; i <= 151; i++) {
       numberArray.push(i);
     }
     const shuffledArray = shuffle(numberArray);
     console.log(shuffledArray);
-
     setIdList(shuffledArray);
-  }, []);
+  };
 
   return (
     <PokemonContext.Provider
@@ -49,6 +48,7 @@ const PokemonContextProvider = ({ children }: Props) => {
         setQuestionsAnswered,
         questionsCorrect,
         setQuestionsCorrect,
+        shuffledPokemon,
       }}
     >
       {children}

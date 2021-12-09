@@ -7,7 +7,7 @@ import { getPokemonById } from "../services/PokemonService";
 import { addScore } from "../services/ScoreService";
 import Score from "../models/Score";
 import AuthContext from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Popup from "./Popup";
 
 const Quiz = () => {
@@ -17,6 +17,7 @@ const Quiz = () => {
     setQuestionsCorrect,
     questionsAnswered,
     setQuestionsAnswered,
+    shuffledPokemon,
   } = useContext(PokemonContext);
 
   const { profile, guestPopup, setGuestPopup, score, setScore } =
@@ -30,12 +31,14 @@ const Quiz = () => {
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     setQuestionsAnswered((prev) => prev + 1);
-    console.log(questionsAnswered, "answered");
-    if (answer === currentPokemon?.name) {
-      setQuestionsCorrect((prev) => prev + 1);
-      console.log(questionsCorrect, "correct");
-    }
     setAnswer("");
+  };
+
+  const newQuiz = () => {
+    shuffledPokemon();
+    setScore(0);
+    setQuestionsAnswered(0);
+    setQuestionsCorrect(0);
   };
 
   useEffect(() => {
@@ -63,9 +66,26 @@ const Quiz = () => {
       setCurrentPokemon(response)
     );
     if (questionsAnswered) {
-      setScore(questionsCorrect * 100 * (questionsCorrect / questionsAnswered));
+      setScore(
+        parseInt(
+          (
+            questionsCorrect *
+            100 *
+            (questionsCorrect / questionsAnswered)
+          ).toString()
+        )
+      );
     }
   }, [counter, idList, questionsAnswered, timer]);
+
+  useEffect(() => {
+    if (answer === currentPokemon?.name) {
+      setQuestionsAnswered((prev) => prev + 1);
+      setQuestionsCorrect((prev) => prev + 1);
+      setAnswer("");
+      setCounter((prev) => prev + 1);
+    }
+  }, [answer]);
 
   return (
     <div className="Quiz">
@@ -87,10 +107,11 @@ const Quiz = () => {
               name="answer"
               id="answer"
               value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
+              onChange={(value) => setAnswer(value.target.value)}
+              autoFocus
             />
             <button onClick={() => setCounter((prev) => prev + 1)}>
-              Next Question
+              I don't know
             </button>
           </form>
           <Link to="/">
@@ -98,20 +119,7 @@ const Quiz = () => {
           </Link>
         </>
       ) : (
-        <div>
-          <p>answered</p>
-          {questionsAnswered}
-          <p>correct</p>
-          {questionsCorrect}
-          <p>score</p>
-          {score}
-          <p></p>
-          <input
-            type="button"
-            value="Restart"
-            onClick={() => window.location.reload()}
-          />
-        </div>
+        <Redirect to="/score" />
       )}
       {guestPopup && !timer && <Popup />}
     </div>

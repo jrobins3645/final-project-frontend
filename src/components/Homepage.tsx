@@ -1,14 +1,21 @@
 import "./Homepage.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Popup from "./Popup";
 import { Link } from "react-router-dom";
-import Score from "../models/Score";
-import ProfileCreator from "./ProfileCreator";
+import PokemonContext from "../context/PokemonContext";
 
 const Homepage = () => {
-  // const [start, setStart] = useState(false);
-  const { profile, user } = useContext(AuthContext);
+  const { profile, user, setScore } = useContext(AuthContext);
+  const { shuffledPokemon, setQuestionsAnswered, setQuestionsCorrect } =
+    useContext(PokemonContext);
+
+  const newQuiz = () => {
+    shuffledPokemon();
+    setScore(0);
+    setQuestionsAnswered(0);
+    setQuestionsCorrect(0);
+  };
 
   return (
     <div className="Homepage">
@@ -17,7 +24,7 @@ const Homepage = () => {
         <p>Type the name of the pokemon that is shown.</p>
         <p>You will have x time to answer as many questions as you can.</p>
         <Link to="/quiz">
-          <button>Start Quiz!</button>
+          <button onClick={() => newQuiz()}>Start Quiz!</button>
         </Link>
       </div>
       {user && !profile ? <Popup /> : null}
