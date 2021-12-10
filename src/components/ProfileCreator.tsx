@@ -15,7 +15,6 @@ const ProfileCreator = () => {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    setGuestPopup(false);
     const profile: Profile = {
       uid: user!.uid,
       avatar:
@@ -32,17 +31,14 @@ const ProfileCreator = () => {
           profile.avatar = response;
           addProfile(profile).then(() => {
             setProfile(profile);
+            setGuestPopup(false);
           });
-          // if (guestPopup) {
-          //   const newScore: Score = {
-          //     score,
-          //     username,
-          //     avatar: response,
-          //     uid: user!.uid,
-          //   };
-          //   addScore(newScore);
-          // }
         });
+      });
+    } else {
+      addProfile(profile).then(() => {
+        setProfile(profile);
+        setGuestPopup(false);
       });
     }
   };

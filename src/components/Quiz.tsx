@@ -26,7 +26,7 @@ const Quiz = () => {
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState(29);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ const Quiz = () => {
     } else {
       setGuestPopup(true);
     }
-  }, [timer]);
+  }, [timer, profile]);
 
   useEffect(() => {
     getPokemonById(idList[counter]).then((response) =>
@@ -89,39 +89,36 @@ const Quiz = () => {
 
   return (
     <div className="Quiz">
-      {timer ? (
-        <>
-          <div className="scoring">
-            <p>
-              Question: {questionsAnswered + 1} Correct: {questionsCorrect}{" "}
-              Current Score: {score}
-            </p>
-          </div>
-          <div>{timer}</div>
-          <form onSubmit={submitHandler}>
-            <Question currentPokemon={currentPokemon!} />
-            <label htmlFor="answer">Answer Here:</label>
-            <input
-              autoComplete="off"
-              type="text"
-              name="answer"
-              id="answer"
-              value={answer}
-              onChange={(value) => setAnswer(value.target.value)}
-              autoFocus
-            />
-            <button onClick={() => setCounter((prev) => prev + 1)}>
-              I don't know
-            </button>
-          </form>
-          <Link to="/">
-            <button>Quit Quiz</button>
-          </Link>
-        </>
-      ) : (
-        <Redirect to="/score" />
-      )}
-      {guestPopup && !timer && <Popup />}
+      <>
+        <div className="scoring">
+          <p>
+            Question: {questionsAnswered + 1} Correct: {questionsCorrect}{" "}
+            Current Score: {score}
+          </p>
+        </div>
+        <div>{timer}</div>
+        <form onSubmit={submitHandler}>
+          <Question currentPokemon={currentPokemon!} />
+          <label htmlFor="answer">Answer Here:</label>
+          <input
+            autoComplete="off"
+            type="text"
+            name="answer"
+            id="answer"
+            value={answer}
+            onChange={(value) => setAnswer(value.target.value)}
+            autoFocus
+          />
+          <button onClick={() => setCounter((prev) => prev + 1)}>
+            I don't know
+          </button>
+        </form>
+        <Link to="/">
+          <button>Quit Quiz</button>
+        </Link>
+      </>
+
+      {guestPopup && <Popup />}
     </div>
   );
 };
