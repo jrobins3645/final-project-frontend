@@ -1,14 +1,23 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import pokeballLogo from "../images/pokeball.png";
 import pokemon_trivia from "../images/pokemon_trivia.png";
 import defaultProfilePic from "../images/defaultProfilePic.jpg";
 import "./Header.css";
+import TriviaContext from "../context/TriviaContext";
 
 const Header = () => {
-  const { profile, user } = useContext(AuthContext);
+  const { profile, user } = useContext(TriviaContext);
+  const [showNav, setShowNav] = useState(false);
+
+  const clickHandler = () => {
+    if (showNav) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  };
 
   return (
     <div className="Header">
@@ -22,7 +31,6 @@ const Header = () => {
           />
         </Link>
       </div>
-
       <div className="profile-menu">
         {profile ? (
           <div className="profile">
@@ -37,8 +45,10 @@ const Header = () => {
           </div>
         )}
         <nav className="dropdown">
-          <i className="fas fa-bars"></i>
-          <div className="drop-content">
+          <button onClick={clickHandler}>
+            <i className="fas fa-bars"></i>
+          </button>
+          <div className={`${showNav ? "drop-content" : "hidden"}`}>
             <div className="menu-item">
               <Link to="/leaderboard">Leaderboard</Link>
             </div>

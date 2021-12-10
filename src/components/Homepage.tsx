@@ -1,14 +1,18 @@
 import "./Homepage.css";
 import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
 import Popup from "./Popup";
 import { Link } from "react-router-dom";
-import PokemonContext from "../context/PokemonContext";
+import TriviaContext from "../context/TriviaContext";
 
 const Homepage = () => {
-  const { profile, user, setScore } = useContext(AuthContext);
-  const { shuffledPokemon, setQuestionsAnswered, setQuestionsCorrect } =
-    useContext(PokemonContext);
+  const {
+    profile,
+    user,
+    setScore,
+    shuffledPokemon,
+    setQuestionsAnswered,
+    setQuestionsCorrect,
+  } = useContext(TriviaContext);
 
   const newQuiz = () => {
     shuffledPokemon();

@@ -1,14 +1,14 @@
 import { signOut } from "@firebase/auth";
 import { useContext, useEffect, useState } from "react";
-import AuthContext from "../context/AuthContext";
 import { deleteProfile } from "../services/ProfileService";
 import { deleteScores, getHighscore } from "../services/ScoreService";
 import "./Profile.css";
 import { auth } from "../firebaseConfig";
 import { useHistory } from "react-router-dom";
+import TriviaContext from "../context/TriviaContext";
 
 const Profile = () => {
-  const { profile } = useContext(AuthContext);
+  const { profile } = useContext(TriviaContext);
   const [requestDelete, setRequestDelete] = useState(false);
   const [highScore, setHighScore] = useState(0);
   let history = useHistory();

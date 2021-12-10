@@ -1,15 +1,13 @@
 import { FormEvent, useContext, useRef, useState } from "react";
-import AuthContext from "../context/AuthContext";
 import Profile from "../models/Profile";
 import { addProfile } from "../services/ProfileService";
 import "./ProfileCreator.css";
 import { storage } from "../firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import Score from "../models/Score";
-import { addScore } from "../services/ScoreService";
+import TriviaContext from "../context/TriviaContext";
 
 const ProfileCreator = () => {
-  const { user, setProfile, setGuestPopup } = useContext(AuthContext);
+  const { user, setProfile, setGuestPopup } = useContext(TriviaContext);
   const [username, setUsername] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 

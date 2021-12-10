@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import PokemonContext from "./PokemonContext";
 
 interface Props {
@@ -11,8 +11,8 @@ const PokemonContextProvider = ({ children }: Props) => {
   const [questionsCorrect, setQuestionsCorrect] = useState<number>(0);
 
   const shuffle = (array: number[]) => {
-    let currentIndex = array.length,
-      randomIndex;
+    let currentIndex = array.length;
+    let randomIndex: number = 0;
 
     // While there remain elements to shuffle...
     while (currentIndex !== 0) {

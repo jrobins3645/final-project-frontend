@@ -59,20 +59,20 @@ h1 {
 .drop-content a:hover {
   color: #fff8dc;
 }
-.drop-content button {
+.button {
   padding: 4px;
   font-weight: bold;
   border: solid black 1px;
 }
 
-.Header .drop-content {
+.hidden {
   display: none;
   position: absolute;
-  background-color: #0075be;
+  /* background-color: #0075be;
   height: 0px;
   right: 0;
   transition-property: height;
-  transition-duration: 1s;
+  transition-duration: 1s; */
 }
 
 .dropdown:hover {
@@ -80,11 +80,19 @@ h1 {
   color: #fff8dc;
 }
 
-.dropdown:hover .drop-content {
+.drop-content {
   display: block;
   position: absolute;
   float: inline-end;
   height: fit-content;
+  background-color: #0075be;
   width: 180px;
   padding: 10px;
+  right: 0;
+}
+
+@media only screen and (max-width: 350px) {
+  body {
+    background-color: lightblue;
+  }
 }

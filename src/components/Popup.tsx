@@ -1,31 +1,11 @@
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import { useContext } from "react";
+import TriviaContext from "../context/TriviaContext";
 import { signInWithGoogle } from "../firebaseConfig";
-import { addScore } from "../services/ScoreService";
 import "./Popup.css";
 import ProfileCreator from "./ProfileCreator";
 
-
-
 const Popup = () => {
-  const { user, profile, score, setGuestPopup } = useContext(AuthContext);
-  const sendUserScore = () => {
-    if (user && profile) {
-      addScore({
-        score,
-        uid: user.uid,
-        avatar: profile.avatar,
-        username: profile.username,
-      }).then((response) => {
-        console.log(response);
-      });
-    }
-  };
-
-  useEffect(() => {
-    sendUserScore();
-  }, [user, profile]);
+  const { user, profile, setGuestPopup } = useContext(TriviaContext);
 
   return (
     <div className="popup">

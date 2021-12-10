@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import "./App.css";
 import Homepage from "./components/Homepage";
 import Header from "./components/Header";
@@ -7,9 +6,6 @@ import Profile from "./components/Profile";
 import Leaderboard from "./components/Leaderboard";
 import About from "./components/About";
 import Quiz from "./components/Quiz";
-import { useContext } from "react";
-import AuthContext from "./context/AuthContext";
-import ScoreScreen from "./components/ScoreScreen";
 
 function App() {
   return (
@@ -31,9 +27,6 @@ function App() {
           </Route>
           <Route path="/quiz" exact>
             <Quiz />
-          </Route>
-          <Route path="/score" exact>
-            <ScoreScreen />
           </Route>
         </Switch>
       </Router>

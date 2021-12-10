@@ -2,13 +2,12 @@ import "./Quiz.css";
 import Pokemon from "../models/Pokemon";
 import Question from "./Question";
 import { FormEvent, useContext, useEffect, useState } from "react";
-import PokemonContext from "../context/PokemonContext";
 import { getPokemonById } from "../services/PokemonService";
 import { addScore } from "../services/ScoreService";
 import Score from "../models/Score";
-import AuthContext from "../context/AuthContext";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Popup from "./Popup";
+import TriviaContext from "../context/TriviaContext";
 
 const Quiz = () => {
   const {
@@ -17,16 +16,15 @@ const Quiz = () => {
     setQuestionsCorrect,
     questionsAnswered,
     setQuestionsAnswered,
-    shuffledPokemon,
-  } = useContext(PokemonContext);
-
-  const { profile, guestPopup, setGuestPopup, score, setScore } =
-    useContext(AuthContext);
-
+    profile,
+    guestPopup,
+    score,
+    setScore,
+  } = useContext(TriviaContext);
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
-  const [timer, setTimer] = useState(29);
+  const [seconds, setSeconds] = useState(0);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -34,32 +32,36 @@ const Quiz = () => {
     setAnswer("");
   };
 
-  const newQuiz = () => {
-    shuffledPokemon();
-    setScore(0);
-    setQuestionsAnswered(0);
-    setQuestionsCorrect(0);
+  const clickHandler = () => {
+    const newScore: Score = {
+      uid: profile!.uid,
+      avatar: profile!.avatar,
+      username: profile!.username,
+      score: score,
+    };
+    addScore(newScore);
   };
 
+  // const newQuiz = () => {
+  //   shuffledPokemon();
+  //   setScore(0);
+  //   setQuestionsAnswered(0);
+  //   setQuestionsCorrect(0);
+  // };
+
   useEffect(() => {
-    if (timer) {
-      setTimeout(() => {
-        setTimer((prev) => prev - 1);
-      }, 1000);
-    } else if (profile) {
-      if (questionsAnswered) {
-        let userScore: Score = {
-          uid: profile!.uid,
-          username: profile!.username,
-          avatar: profile!.avatar,
-          score: score,
-        };
-        addScore(userScore);
+    let interval: any = null;
+    let counter: number = 10;
+    interval = setInterval(() => {
+      counter--;
+      setSeconds(counter);
+      // console.log(counter);
+      if (counter === 0) {
+        clearInterval(interval);
       }
-    } else {
-      setGuestPopup(true);
-    }
-  }, [timer, profile]);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     getPokemonById(idList[counter]).then((response) =>
@@ -76,7 +78,7 @@ const Quiz = () => {
         )
       );
     }
-  }, [counter, idList, questionsAnswered, timer]);
+  }, [counter, idList, questionsAnswered, seconds]);
 
   useEffect(() => {
     if (answer === currentPokemon?.name) {
@@ -89,36 +91,48 @@ const Quiz = () => {
 
   return (
     <div className="Quiz">
-      <>
+      {seconds ? (
+        <>
+          <div className="scoring">
+            <p>
+              Question: {questionsAnswered + 1} Correct: {questionsCorrect}{" "}
+              Current Score: {score}
+            </p>
+          </div>
+          <div>{seconds}</div>
+          <form onSubmit={submitHandler}>
+            <Question currentPokemon={currentPokemon!} />
+            <label htmlFor="answer">Answer Here:</label>
+            <input
+              autoComplete="off"
+              type="text"
+              name="answer"
+              id="answer"
+              value={answer}
+              onChange={(value) => setAnswer(value.target.value)}
+              autoFocus
+            />
+            <button onClick={() => setCounter((prev) => prev + 1)}>
+              I don't know
+            </button>
+          </form>
+          <Link to="/">
+            <button>Quit Quiz</button>
+          </Link>
+        </>
+      ) : (
         <div className="scoring">
           <p>
-            Question: {questionsAnswered + 1} Correct: {questionsCorrect}{" "}
-            Current Score: {score}
+            Questions Answered: {questionsAnswered} Questions Correct:{" "}
+            {questionsCorrect} Current Score: {score}
           </p>
+          <Link to="/">
+            <button onClick={clickHandler}>Submit Score</button>
+          </Link>
         </div>
-        <div>{timer}</div>
-        <form onSubmit={submitHandler}>
-          <Question currentPokemon={currentPokemon!} />
-          <label htmlFor="answer">Answer Here:</label>
-          <input
-            autoComplete="off"
-            type="text"
-            name="answer"
-            id="answer"
-            value={answer}
-            onChange={(value) => setAnswer(value.target.value)}
-            autoFocus
-          />
-          <button onClick={() => setCounter((prev) => prev + 1)}>
-            I don't know
-          </button>
-        </form>
-        <Link to="/">
-          <button>Quit Quiz</button>
-        </Link>
-      </>
+      )}
 
-      {guestPopup && <Popup />}
+      {!guestPopup && !seconds && !profile ? <Popup /> : <></>}
     </div>
   );
 };

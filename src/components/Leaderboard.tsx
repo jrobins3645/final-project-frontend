@@ -18,8 +18,8 @@ const Leaderboard = () => {
       <ol>
         {scores.map((score) => {
           return (
-            <li className="list-item">
-              <img src={score.avatar} alt="Avatar" className="avatar"/>
+            <li className="list-item" key={score._id}>
+              <img src={score.avatar} alt="Avatar" className="avatar" />
               {score.username} has {score.score} points
             </li>
           );

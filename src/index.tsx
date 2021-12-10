@@ -3,16 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import AuthContextProvider from "./context/AuthContextProvider";
-import PokemonContextProvider from "./context/PokemonContextProvider";
+import TriviaContextProvider from "./context/TriviaContextProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <PokemonContextProvider>
-        <App />
-      </PokemonContextProvider>
-    </AuthContextProvider>
+    <TriviaContextProvider>
+      <App />
+    </TriviaContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
