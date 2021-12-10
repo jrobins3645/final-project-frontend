@@ -21,16 +21,16 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <div className="logo-title">
-        <Link to="/">
+      <Link to="/">
+        <div className="logo-title">
           <img src={pokeballLogo} alt="logo" className="pokeball logo" />
           <img
             src={pokemon_trivia}
             alt="Pokemon trivia title"
             className="title"
           />
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="profile-menu">
         {profile ? (
           <div className="profile">
@@ -45,10 +45,10 @@ const Header = () => {
           </div>
         )}
         <nav className="dropdown">
-          <button onClick={clickHandler}>
+          <button className="burger" onClick={clickHandler}>
             <i className="fas fa-bars"></i>
           </button>
-          <div className={`${showNav ? "drop-content" : "hidden"}`}>
+          <div className={`${showNav ? "mobile-content" : "desktop-content"}`}>
             <div className="menu-item">
               <Link to="/leaderboard">Leaderboard</Link>
             </div>

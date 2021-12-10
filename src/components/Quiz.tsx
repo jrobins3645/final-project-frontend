@@ -51,7 +51,7 @@ const Quiz = () => {
 
   useEffect(() => {
     let interval: any = null;
-    let counter: number = 10;
+    let counter: number = 30;
     interval = setInterval(() => {
       counter--;
       setSeconds(counter);
@@ -78,7 +78,7 @@ const Quiz = () => {
         )
       );
     }
-  }, [counter, idList, questionsAnswered, seconds]);
+  }, [counter, idList, questionsAnswered, questionsCorrect, seconds, setScore]);
 
   useEffect(() => {
     if (answer === currentPokemon?.name) {
@@ -87,7 +87,7 @@ const Quiz = () => {
       setAnswer("");
       setCounter((prev) => prev + 1);
     }
-  }, [answer]);
+  }, [answer, currentPokemon, setQuestionsAnswered, setQuestionsCorrect]);
 
   return (
     <div className="Quiz">
@@ -127,7 +127,9 @@ const Quiz = () => {
             {questionsCorrect} Current Score: {score}
           </p>
           <Link to="/">
-            <button onClick={clickHandler}>Submit Score</button>
+            <button onClick={clickHandler} autoFocus={true}>
+              Submit Score
+            </button>
           </Link>
         </div>
       )}

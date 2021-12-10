@@ -43,8 +43,9 @@ const ProfileCreator = () => {
 
   return (
     <form className="ProfileCreator" onSubmit={submitHandler}>
-      <label htmlFor="username">
-        Create a Username
+      <h2 className="element">Create Account</h2>
+      <label htmlFor="username" className="username element">
+        Username
         <input
           type="text"
           name="username"
@@ -53,11 +54,16 @@ const ProfileCreator = () => {
           onChange={(e) => {
             setUsername(e.target.value);
           }}
+          autoFocus={true}
+          autoComplete="off"
         />
       </label>
-      <label htmlFor=""></label>
-      <input ref={fileInputRef} type="file" />
-      <button>Submit</button>
+      <label htmlFor="file element">
+        Upload Avatar
+        <input ref={fileInputRef} type="file" className="file element" />
+      </label>
+
+      <button className="element">Submit</button>
     </form>
   );
 };

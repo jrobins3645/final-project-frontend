@@ -1,4 +1,6 @@
-h1 {
+h1,
+p {
+  padding: 0;
   margin: 0;
 }
 
@@ -12,15 +14,18 @@ h1 {
 }
 .Header .logo-title {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   padding: 4px;
+  max-width: 400px;
 }
 .Header .logo {
   width: 40px;
   height: 40px;
 }
 .Header .title {
-  height: 50px;
+  width: 80%;
 }
 
 .Header .profile-menu {
@@ -29,6 +34,8 @@ h1 {
 }
 .Header .profile {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   font-size: 20px;
   padding: 8px;
@@ -37,62 +44,90 @@ h1 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin: 6px;
 }
-.dropdown {
-  position: relative;
-  display: inline-block;
-  transition-property: background-color;
-  transition-duration: 1s;
-}
-.fa-bars {
-  font-size: 47px;
-  margin: 18px;
-}
-.drop-content a {
-  padding: 14px;
-  margin: 16px;
-  text-decoration: none;
-  border-bottom: solid #fff8dc 1px;
-  color: black;
-  display: block;
-}
-.drop-content a:hover {
-  color: #fff8dc;
-}
-.button {
+
+.Header .burger {
+  display: none;
   padding: 4px;
   font-weight: bold;
-  border: solid black 1px;
-}
-
-.hidden {
-  display: none;
-  position: absolute;
-  /* background-color: #0075be;
-  height: 0px;
-  right: 0;
-  transition-property: height;
-  transition-duration: 1s; */
-}
-
-.dropdown:hover {
   background-color: #0075be;
-  color: #fff8dc;
+  border: none;
 }
 
-.drop-content {
-  display: block;
-  position: absolute;
-  float: inline-end;
-  height: fit-content;
-  background-color: #0075be;
-  width: 180px;
-  padding: 10px;
-  right: 0;
+.Header .desktop-content {
+  display: flex;
+  align-items: center;
 }
 
-@media only screen and (max-width: 350px) {
-  body {
+.Header .desktop-content a,
+.Header .desktop-content button {
+  text-decoration: none;
+  padding: 8px;
+  font-style: 12px;
+}
+.Header .desktop-content a {
+  font-weight: bold;
+  color: black;
+  border-right: solid black 1px;
+}
+.Header .desktop-content a:hover {
+  color: #0075be;
+}
+.Header .desktop-content button {
+  margin: 8px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Header {
     background-color: lightblue;
+  }
+  .title {
+    display: none;
+  }
+
+  .Header .burger {
+    display: flex;
+  }
+  .Header .burger:hover {
+    cursor: pointer;
+  }
+  .hidden {
+    display: none;
+    position: absolute;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    transition-property: background-color;
+    transition-duration: 1s;
+  }
+  .fa-bars {
+    font-size: 47px;
+    margin: 18px;
+  }
+  .Header .desktop-content {
+    display: none;
+  }
+  .mobile-content a {
+    padding: 14px;
+    margin: 16px;
+    text-decoration: none;
+    border-bottom: solid #fff8dc 1px;
+    color: black;
+    display: block;
+  }
+  .mobile-content a:hover {
+    color: #fff8dc;
+  }
+  .mobile-content {
+    display: block;
+    position: absolute;
+    float: inline-end;
+    height: fit-content;
+    background-color: #0075be;
+    width: 180px;
+    padding: 10px;
+    right: 0;
   }
 }

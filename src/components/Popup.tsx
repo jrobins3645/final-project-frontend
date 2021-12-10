@@ -8,17 +8,19 @@ const Popup = () => {
   const { user, profile, setGuestPopup } = useContext(TriviaContext);
 
   return (
-    <div className="popup">
-      {user && !profile && <ProfileCreator />}
-      {!user ? (
-        <div className="sign-in">
-          <button onClick={signInWithGoogle}>Sign in with Google</button>
-          <p>or</p>
-          <button onClick={() => setGuestPopup(false)}>
-            Continue as Guest
-          </button>
-        </div>
-      ) : null}
+    <div className="Popup-container">
+      <div className="Popup">
+        {user && !profile && <ProfileCreator />}
+        {!user ? (
+          <div className="sign-in">
+            <button onClick={signInWithGoogle}>Sign in with Google</button>
+            <p>or</p>
+            <button onClick={() => setGuestPopup(false)}>
+              Continue as Guest
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

@@ -13,6 +13,7 @@ const Question = ({ currentPokemon }: Props) => {
         src={currentPokemon?.sprites.other["official-artwork"].front_default}
         alt="Pokemon"
       />
+      <p>(It's {currentPokemon?.name}!)</p>
     </div>
   );
 };

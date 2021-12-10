@@ -1,5 +1,23 @@
-.popup {
-  background-color: cyan;
-  height: 75vh;
-  width: 75vw;
+.Popup-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.Popup {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 15vh;
+  background-color: #cc0000;
+  height: 300px;
+  width: 300px;
+  border: solid #0075be 4px;
+  border-radius: 12px;
 }
