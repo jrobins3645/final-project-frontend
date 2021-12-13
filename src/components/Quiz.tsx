@@ -94,12 +94,11 @@ const Quiz = () => {
       {seconds ? (
         <>
           <div className="scoring">
-            <p>
-              Question: {questionsAnswered + 1} Correct: {questionsCorrect}{" "}
-              Current Score: {score}
-            </p>
+            <p>Question: {questionsAnswered + 1}</p>
+            <p>Correct: {questionsCorrect} </p>
+            <p> Current Score: {score}</p>
           </div>
-          <div>{seconds}</div>
+          <div>Time Remaining: {seconds}</div>
           <form onSubmit={submitHandler}>
             <Question currentPokemon={currentPokemon!} />
             <label htmlFor="answer">Answer Here:</label>

@@ -3,8 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Press Start 2P", cursive;
 }
 .Quiz .scoring {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
+/* 
+.Quiz .scoring {
+} */
