@@ -3,7 +3,21 @@
   justify-content: center;
 }
 
-.quiz-container {
+.Homepage h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 100%;
+}
+
+.Homepage .quiz-container {
   border: 1px black solid;
   width: 200px;
+  box-shadow: -5px 5px 5px grey;
+}
+
+.Homepage button {
+  margin: 1.5em;
+}
+
+.Homepage .quiz-container :hover {
+  transform: rotateY(180deg);
 }

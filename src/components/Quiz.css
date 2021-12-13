@@ -1,14 +1,55 @@
 .Quiz {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center;
+  align-items: center; */
   font-family: "Press Start 2P", cursive;
 }
 .Quiz .scoring {
   display: flex;
   flex-direction: column;
+  width: fit-content;
+  margin: 1.5em;
 }
-/* 
-.Quiz .scoring {
+
+/* .Quiz button {
+  border-radius: 11px;
+  border: 1px black solid;
+  background-color: #3b4cca;
+  color: cornsilk;
 } */
+
+/* .Quiz input {
+  border-radius: 11px;
+} */
+
+.Quiz button {
+  color: #ffde00;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 2px solid #ffde00;
+  border-radius: 0.5rem;
+  background-color: #3b4cca;
+}
+
+.Quiz button:hover {
+  background: #e5dc15;
+  color: #0e79b2;
+  box-shadow: 0 0.6em #c2bb11, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+input[type="text"] {
+  border: black 1px solid;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.Quiz #I-dont-know-button {
+  border-radius: 0px 4px 4px 0px;
+  background-color: #cc0000;
+  border: black 1px solid;
+  height: 20px;
+  color: cornsilk;
+}
