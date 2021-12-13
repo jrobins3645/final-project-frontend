@@ -51,7 +51,7 @@ const Quiz = () => {
 
   useEffect(() => {
     let interval: any = null;
-    let counter: number = 30;
+    let counter: number = 1000;
     interval = setInterval(() => {
       counter--;
       setSeconds(counter);
@@ -93,31 +93,44 @@ const Quiz = () => {
     <div className="Quiz">
       {seconds ? (
         <>
-          <div className="scoring">
-            <p>Question: {questionsAnswered + 1}</p>
-            <p>Correct: {questionsCorrect} </p>
-            <p> Current Score: {score}</p>
+          <div className="top-left">
+            <div className="scoring">
+              <p>Question: {questionsAnswered + 1}</p>
+              <p>Correct: {questionsCorrect} </p>
+              <p> Current Score: {score}</p>
+            </div>
           </div>
-          <div>Time Remaining: {seconds}</div>
-          <form onSubmit={submitHandler}>
-            <Question currentPokemon={currentPokemon!} />
-            <label htmlFor="answer">Answer Here:</label>
-            <input
-              autoComplete="off"
-              type="text"
-              name="answer"
-              id="answer"
-              value={answer}
-              onChange={(value) => setAnswer(value.target.value)}
-              autoFocus
-            />
-            <button onClick={() => setCounter((prev) => prev + 1)}>
-              I don't know
-            </button>
-          </form>
-          <Link to="/">
-            <button>Quit Quiz</button>
-          </Link>
+          <div className="top-right">
+            <div></div>
+            <div>Time Remaining: {seconds}</div>
+            <form onSubmit={submitHandler}>
+              <Question currentPokemon={currentPokemon!} />
+              <label htmlFor="answer">Answer Here:</label>
+              <div className="conjoined">
+                <div className="answer-button">
+                  <input
+                    className="idk"
+                    autoComplete="off"
+                    type="text"
+                    name="answer"
+                    id="answer"
+                    value={answer}
+                    onChange={(value) => setAnswer(value.target.value)}
+                    autoFocus
+                  />
+                  <button
+                    id="I-dont-know-button"
+                    onClick={() => setCounter((prev) => prev + 1)}
+                  >
+                    I don't know
+                  </button>
+                </div>
+              </div>
+            </form>
+            <Link to="/">
+              <button>Quit Quiz</button>
+            </Link>
+          </div>
         </>
       ) : (
         <div className="scoring">

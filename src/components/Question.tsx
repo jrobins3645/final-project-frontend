@@ -10,6 +10,7 @@ const Question = ({ currentPokemon }: Props) => {
     <div className="Question">
       <p>Who's that pokemon?!?</p>
       <img
+        className="pokemon-pic"
         src={currentPokemon?.sprites.other["official-artwork"].front_default}
         alt="Pokemon"
       />

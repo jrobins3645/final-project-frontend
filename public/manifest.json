@@ -1,7 +1,11 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
-  "icons": [],
+  "icons": [
+    {
+      "src": "pokeball.png"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
