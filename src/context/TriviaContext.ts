@@ -7,7 +7,6 @@ export interface TriviaContextModel {
   profile: Profile | null;
   guestPopup: boolean;
   score: number;
-  idList: number[];
   questionsAnswered: number;
   questionsCorrect: number;
   setScore: (score: number) => void;
@@ -15,14 +14,13 @@ export interface TriviaContextModel {
   setGuestPopup: (boolean: boolean) => void;
   setQuestionsAnswered: React.Dispatch<React.SetStateAction<number>>;
   setQuestionsCorrect: React.Dispatch<React.SetStateAction<number>>;
-  shuffledPokemon: () => void;
+  shuffle: (idList: number[]) => number[];
 }
 const defaultValue: TriviaContextModel = {
   user: null,
   profile: null,
   guestPopup: false,
   score: 0,
-  idList: [],
   questionsAnswered: 0,
   questionsCorrect: 0,
   setScore: () => {},
@@ -30,7 +28,7 @@ const defaultValue: TriviaContextModel = {
   setProfile: () => {},
   setQuestionsAnswered: () => {},
   setQuestionsCorrect: () => {},
-  shuffledPokemon: () => {},
+  shuffle: () => [],
 };
 const TriviaContext = createContext(defaultValue);
 export default TriviaContext;

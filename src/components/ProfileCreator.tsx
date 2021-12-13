@@ -2,7 +2,7 @@ import { FormEvent, useContext, useRef, useState } from "react";
 import Profile from "../models/Profile";
 import { addProfile } from "../services/ProfileService";
 import "./ProfileCreator.css";
-import { storage } from "../firebaseConfig";
+import { signOut, storage } from "../firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import TriviaContext from "../context/TriviaContext";
 
@@ -42,29 +42,34 @@ const ProfileCreator = () => {
   };
 
   return (
-    <form className="ProfileCreator" onSubmit={submitHandler}>
-      <h2 className="element">Create Account</h2>
-      <label htmlFor="username" className="username element">
-        Username
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-          autoFocus={true}
-          autoComplete="off"
-        />
-      </label>
-      <label htmlFor="file element">
-        Upload Avatar
-        <input ref={fileInputRef} type="file" className="file element" />
-      </label>
+    <div>
+      <p className="close-popup" onClick={signOut}>
+        X
+      </p>
+      <form className="ProfileCreator" onSubmit={submitHandler}>
+        <h2 className="element">Create Account</h2>
+        <label htmlFor="username" className="username element">
+          Username
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+            autoFocus={true}
+            autoComplete="off"
+          />
+        </label>
+        <label htmlFor="file element">
+          Upload Avatar
+          <input ref={fileInputRef} type="file" className="file element" />
+        </label>
 
-      <button className="element">Submit</button>
-    </form>
+        <button className="element">Submit</button>
+      </form>
+    </div>
   );
 };
 

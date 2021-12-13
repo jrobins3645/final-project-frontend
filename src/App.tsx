@@ -25,7 +25,7 @@ function App() {
           <Route path="/about" exact>
             <About />
           </Route>
-          <Route path="/quiz" exact>
+          <Route path="/quiz">
             <Quiz />
           </Route>
         </Switch>
