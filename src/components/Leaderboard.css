@@ -1,4 +1,47 @@
+.Leaderboard {
+  margin-top: 10px;
+  display: flex;
+  /* position: absolute; */
+  /* float: inline-end; */
+  /* height: fit-content; */
+  background-color: #cc0000;
+  padding: 10px;
+  /* right: 0; */
+  border-width: 10px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #ffde00, rgb(0, 0, 1)) 1 100%;
+
+  /* z-index: 1; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2);
+  font-family: "Press Start 2P", cursive;
+  margin: 20px;
+}
+
 .avatar {
   width: 25px;
   border-radius: 50%;
+  margin-right: 5px;
 }
+
+.Leaderboard .list-item {
+  margin: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  border: 2px solid black;
+}
+
+.Leaderboard .score {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .Leaderboard ol.ball {
+  list-style-image: url("../images/pokeball.png");
+  width: 5px;
+  height: 5px;
+  list-style-image:
+} */

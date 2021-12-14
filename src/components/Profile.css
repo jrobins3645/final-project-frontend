@@ -51,7 +51,7 @@
   font-weight: bold;
   background-color: #cc0000;
   border: none;
-  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  border-radius: 0.5rem;
   color: cornsilk;
   border-top: 0px black solid;
   transform: translateY(0.6em);
@@ -65,7 +65,7 @@
   font-weight: bold;
   background-color: #cc0000;
   border: none;
-  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  border-radius: 0.5rem;
   color: cornsilk;
   border-top: 0px black solid;
   transform: translateY(0.6em);
@@ -92,10 +92,18 @@
   flex-direction: column;
   width: 20em;
   height: 20em;
-  background-color: white;
-  position: absolute;
+  background-color: #cc0000;
+  position: fixed;
+  border-radius: 5px;
+  padding: 10px;
+  top: 100px;
+  /* border: 5px solid red; */
+  padding: 0;
 }
-
+.Profile .are-you-sure-text {
+  background-color: white;
+  height: 100%;
+}
 .Profile .are-you-sure-popup-container {
   width: 100vw;
   height: 100vh;
