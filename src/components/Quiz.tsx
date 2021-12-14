@@ -74,7 +74,7 @@ const Quiz = () => {
 
   useEffect(() => {
     let interval: any = null;
-    let countdown: number = 5;
+    let countdown: number = 60;
     interval = setInterval(() => {
       countdown--;
       setSeconds(countdown);
