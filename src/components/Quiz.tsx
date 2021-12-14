@@ -5,13 +5,12 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import { getPokemonById } from "../services/PokemonService";
 import { addScore } from "../services/ScoreService";
 import Score from "../models/Score";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Popup from "./Popup";
 import TriviaContext from "../context/TriviaContext";
 
 const Quiz = () => {
   const {
-    idList,
     questionsCorrect,
     setQuestionsCorrect,
     questionsAnswered,
@@ -20,11 +19,17 @@ const Quiz = () => {
     guestPopup,
     score,
     setScore,
+    shuffle,
   } = useContext(TriviaContext);
   const [counter, setCounter] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
   const [answer, setAnswer] = useState("");
   const [seconds, setSeconds] = useState(0);
+  const [shuffledIds, setShuffledIds] = useState<number[]>([]);
+  let idList: number[] = [];
+  const generations: string | null = new URLSearchParams(
+    useLocation().search
+  ).get("gen");
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -42,29 +47,71 @@ const Quiz = () => {
     addScore(newScore);
   };
 
-  // const newQuiz = () => {
-  //   shuffledPokemon();
-  //   setScore(0);
-  //   setQuestionsAnswered(0);
-  //   setQuestionsCorrect(0);
-  // };
-
   useEffect(() => {
     let interval: any = null;
-    let counter: number = 1000;
+    let countdown: number = 60;
     interval = setInterval(() => {
-      counter--;
-      setSeconds(counter);
-      // console.log(counter);
-      if (counter === 0) {
+      countdown--;
+      setSeconds(countdown);
+      if (countdown === 0) {
         clearInterval(interval);
       }
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
   useEffect(() => {
-    getPokemonById(idList[counter]).then((response) =>
+    // adds the IDs of the checked generations to the idList
+    if (generations?.includes("1")) {
+      for (let i = 1; i < 151; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("2")) {
+      for (let i = 152; i < 251; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("3")) {
+      for (let i = 252; i < 386; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("4")) {
+      for (let i = 387; i < 493; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("5")) {
+      for (let i = 494; i < 649; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("6")) {
+      for (let i = 650; i < 721; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("7")) {
+      for (let i = 722; i < 809; i++) {
+        idList.push(i);
+      }
+    }
+    if (generations?.includes("8")) {
+      for (let i = 810; i < 898; i++) {
+        idList.push(i);
+      }
+    }
+
+    setShuffledIds(shuffle(idList));
+  }, []);
+  useEffect(() => {
+    if (answer === currentPokemon?.name) {
+      setQuestionsAnswered((prev) => prev + 1);
+      setQuestionsCorrect((prev) => prev + 1);
+      setAnswer("");
+      setCounter((prev) => prev + 1);
+    }
+    getPokemonById(shuffledIds[counter]).then((response) =>
       setCurrentPokemon(response)
     );
     if (questionsAnswered) {
@@ -78,16 +125,9 @@ const Quiz = () => {
         )
       );
     }
-  }, [counter, idList, questionsAnswered, questionsCorrect, seconds, setScore]);
-
-  useEffect(() => {
-    if (answer === currentPokemon?.name) {
-      setQuestionsAnswered((prev) => prev + 1);
-      setQuestionsCorrect((prev) => prev + 1);
-      setAnswer("");
-      setCounter((prev) => prev + 1);
-    }
-  }, [answer, currentPokemon, setQuestionsAnswered, setQuestionsCorrect]);
+    console.log(shuffledIds);
+    console.log(currentPokemon);
+  }, [shuffledIds, questionsAnswered, questionsCorrect, answer, counter]);
 
   return (
     <div className="Quiz">

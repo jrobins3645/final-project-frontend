@@ -16,13 +16,13 @@ const Profile = () => {
   useEffect(() => {
     if (profile) {
       getHighscore(profile?.uid!).then((response) => {
-        console.log(response);
-        setHighScore(response[0].score);
+        response.length !== 0 && setHighScore(response[0].score);
       });
     }
   }, [profile]);
 
   const clickHandler = () => {
+    console.log("clicked delete");
     deleteProfile(profile!.uid).then(() => {});
     deleteScores(profile!.uid).then(() => {});
     signOut(auth);
@@ -32,11 +32,7 @@ const Profile = () => {
   return (
     <div className="Profile">
       <h2>Username: {profile?.username}</h2>
-      {highScore ? (
-        <h3>Personal High Score: {highScore} </h3>
-      ) : (
-        <>Login to see high score</>
-      )}
+      <h3>Personal High Score: {highScore} </h3>
       <button onClick={() => setRequestDelete(true)}>Delete Account</button>
       {requestDelete ? (
         <div className="verify-delete-container">

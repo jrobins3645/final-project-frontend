@@ -10,7 +10,6 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [guestPopup, setGuestPopup] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
-  const [idList, setIdList] = useState<number[]>([]);
   const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
   const [questionsCorrect, setQuestionsCorrect] = useState<number>(0);
 
@@ -29,14 +28,6 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
       ];
     }
     return array;
-  };
-  const shuffledPokemon = () => {
-    const numberArray = [];
-    for (let i = 1; i <= 151; i++) {
-      numberArray.push(i);
-    }
-    const shuffledArray = shuffle(numberArray);
-    setIdList(shuffledArray);
   };
 
   useEffect(() => {
@@ -58,7 +49,6 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
     <TriviaContext.Provider
       value={{
         user,
-        idList,
         profile,
         guestPopup,
         score,
@@ -69,7 +59,7 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
         setScore,
         setQuestionsAnswered,
         setQuestionsCorrect,
-        shuffledPokemon,
+        shuffle,
       }}
     >
       {children}
