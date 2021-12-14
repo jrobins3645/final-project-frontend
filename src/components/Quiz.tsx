@@ -27,10 +27,33 @@ const Quiz = () => {
   const [answer, setAnswer] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [shuffledIds, setShuffledIds] = useState<number[]>([]);
+  const [hintPoints, setHintPoints] = useState<number>(0);
+  const [hintButton, setHintButton] = useState<boolean>(true);
+  const [firstHintString, setFirstHintString] = useState("");
+
   let idList: number[] = [];
   const generations: string | null = new URLSearchParams(
     useLocation().search
   ).get("gen");
+
+  const getFirstHint = () => {
+    let nameArray = currentPokemon!.name.split("");
+    let firstTwo = [];
+    firstTwo.push(nameArray[0], nameArray[1]);
+    setFirstHintString(`First two letters: ${firstTwo.join("").toUpperCase()}`);
+  };
+
+  const hintHandler = () => {
+    setHintPoints((prev) => prev + 25);
+    setHintButton(false);
+    getFirstHint();
+  };
+
+  const newQuiz = () => {
+    setScore(0);
+    setQuestionsAnswered(0);
+    setQuestionsCorrect(0);
+  };
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -46,11 +69,12 @@ const Quiz = () => {
       score: score,
     };
     addScore(newScore);
+    newQuiz();
   };
 
   useEffect(() => {
     let interval: any = null;
-    let countdown: number = 60;
+    let countdown: number = 5;
     interval = setInterval(() => {
       countdown--;
       setSeconds(countdown);
@@ -117,12 +141,12 @@ const Quiz = () => {
       setCurrentPokemon(response)
     );
     if (questionsAnswered) {
+      setHintButton(true);
       setScore(
         parseInt(
           (
-            questionsCorrect *
-            100 *
-            (questionsCorrect / questionsAnswered)
+            questionsCorrect * 100 * (questionsCorrect / questionsAnswered) -
+            hintPoints
           ).toString()
         )
       );
@@ -136,7 +160,7 @@ const Quiz = () => {
         answer
       );
       console.log(similarity);
-      if (similarity >= 0.69) {
+      if (similarity >= 0.7) {
         setAnswer(currentPokemon!.name);
       }
     }
@@ -156,8 +180,12 @@ const Quiz = () => {
           <div className="top-right">
             <div></div>
             <div>Time Remaining: {seconds}</div>
+
             <form onSubmit={submitHandler}>
               <Question currentPokemon={currentPokemon!} />
+              <p className={`${hintButton ? "hide" : "hint"}`}>
+                {firstHintString}
+              </p>
               <label htmlFor="answer">Answer Here:</label>
               <div className="conjoined">
                 <div className="answer-button">
@@ -180,8 +208,17 @@ const Quiz = () => {
                 </div>
               </div>
             </form>
+            <p className="hint"></p>
+            <button
+              onClick={hintHandler}
+              className={`${hintButton ? "hint-button" : "hide"}`}
+            >
+              Hint
+            </button>
             <Link to="/">
-              <button className="quit-button">Quit Quiz</button>
+              <button className="quit-button" onClick={newQuiz}>
+                Quit Quiz
+              </button>
             </Link>
           </div>
         </>
