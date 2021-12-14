@@ -119,7 +119,7 @@ const Quiz = () => {
                     autoFocus
                   />
                   <button
-                    id="I-dont-know-button"
+                    className="I-dont-know-button"
                     onClick={() => setCounter((prev) => prev + 1)}
                   >
                     I don't know
@@ -128,7 +128,7 @@ const Quiz = () => {
               </div>
             </form>
             <Link to="/">
-              <button>Quit Quiz</button>
+              <button className="quit-button">Quit Quiz</button>
             </Link>
           </div>
         </>
