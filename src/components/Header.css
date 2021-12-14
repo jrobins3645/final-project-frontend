@@ -69,6 +69,9 @@ p {
 .Header .desktop-content {
   display: flex;
   align-items: center;
+  font-weight: bold;
+  color: black;
+  border-right: solid black 1px;
 }
 
 .Header .desktop-content a,
@@ -107,7 +110,7 @@ p {
   transform: translateY(0.6em);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
   .Header {
     background-color: #ffde00;
   }

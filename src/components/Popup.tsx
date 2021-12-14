@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import TriviaContext from "../context/TriviaContext";
 import { signInWithGoogle } from "../firebaseConfig";
 import "./Popup.css";
@@ -15,9 +16,11 @@ const Popup = () => {
           <div className="sign-in">
             <button onClick={signInWithGoogle}>Sign in with Google</button>
             <p>or</p>
-            <button onClick={() => setGuestPopup(false)}>
-              Continue as Guest
-            </button>
+            <Link to="/">
+              <button onClick={() => setGuestPopup(false)}>
+                Continue as Guest
+              </button>
+            </Link>
           </div>
         ) : null}
       </div>

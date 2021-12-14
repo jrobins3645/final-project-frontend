@@ -1,8 +1,4 @@
 .Quiz {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center;
-  align-items: center; */
   font-family: "Press Start 2P", cursive;
 }
 .Quiz .scoring {
@@ -11,17 +7,6 @@
   width: fit-content;
   margin: 1.5em;
 }
-
-/* .Quiz button {
-  border-radius: 11px;
-  border: 1px black solid;
-  background-color: #3b4cca;
-  color: cornsilk;
-} */
-
-/* .Quiz input {
-  border-radius: 11px;
-} */
 
 .Quiz .quit-button {
   padding: 4px;
@@ -57,4 +42,8 @@ input:focus {
   border: black 1px solid;
   height: 20px;
   color: cornsilk;
+}
+
+.Quiz .hide {
+  display: none;
 }

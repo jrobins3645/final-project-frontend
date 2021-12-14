@@ -92,11 +92,7 @@
   border: 2px solid black;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: black;
-<<<<<<< HEAD
   /* margin: 1px; */
-=======
-  margin: 8px;
->>>>>>> 527ede1bd52434d8a6ef373010cf6559c480c167
   box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
 }
 .Homepage button:active {
@@ -106,8 +102,7 @@
   transform: translateY(0.6em);
 }
 
-<<<<<<< HEAD
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 900px) {
   .Homepage .flip-card-back {
     background-color: #cc0000;
     color: black;
@@ -115,10 +110,6 @@
     border-radius: 11px;
   }
   .Homepage .flip-card:hover .flip-card-inner {
-=======
-@media only screen and (max-width: 800px) {
-  .Homepage .flip-card .flip-card-inner {
->>>>>>> 527ede1bd52434d8a6ef373010cf6559c480c167
     transform: rotateY(0deg);
   }
 }
