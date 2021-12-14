@@ -8,8 +8,15 @@ import "./Header.css";
 import TriviaContext from "../context/TriviaContext";
 
 const Header = () => {
-  const { profile, user } = useContext(TriviaContext);
+  const { profile, user, setScore, setQuestionsAnswered, setQuestionsCorrect } =
+    useContext(TriviaContext);
   const [showNav, setShowNav] = useState(false);
+
+  const newQuiz = () => {
+    setScore(0);
+    setQuestionsAnswered(0);
+    setQuestionsCorrect(0);
+  };
 
   const clickHandler = () => {
     if (showNav) {
@@ -21,7 +28,7 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <Link to="/">
+      <Link to="/" onClick={newQuiz}>
         <div className="logo-title">
           <img src={pokeballLogo} alt="logo" className="pokeball logo" />
           <img
@@ -50,19 +57,19 @@ const Header = () => {
           </button>
           <div className={`${showNav ? "mobile-content" : "desktop-content"}`}>
             <div className="menu-item">
-              <Link to="/leaderboard" onClick={clickHandler}>
+              <Link to="/leaderboard" onClick={() => {}}>
                 Leaderboard
               </Link>
             </div>
             <div className="menu-item">
-              <Link to="/about" onClick={clickHandler}>
+              <Link to="/about" onClick={() => {}}>
                 About
               </Link>
             </div>
             {user ? (
               <>
                 <div className="menu-item">
-                  <Link to={`/profiles/${profile?.uid}`} onClick={clickHandler}>
+                  <Link to={`/profiles/${profile?.uid}`} onClick={() => {}}>
                     My Account
                   </Link>
                 </div>
