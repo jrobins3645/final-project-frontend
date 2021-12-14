@@ -11,6 +11,7 @@ p {
   background-color: #ffde00;
   margin: 0px;
   padding: 0px;
+  margin-bottom: 1.5em;
 }
 .Header .logo-title {
   display: flex;
@@ -60,6 +61,11 @@ p {
   box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
 }
 
+.Header .fa-bars {
+  font-size: 30px;
+  margin: 10px;
+}
+
 .Header .desktop-content {
   display: flex;
   align-items: center;
@@ -81,6 +87,24 @@ p {
 }
 .Header .desktop-content button {
   margin: 8px;
+}
+
+.Header button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+.Header button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
 }
 
 @media only screen and (max-width: 1000px) {

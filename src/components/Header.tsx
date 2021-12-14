@@ -61,7 +61,9 @@ const Header = () => {
                   <Link to={`/profiles/${profile?.uid}`}>My Account</Link>
                 </div>
                 <div className="menu-item">
-                  <button onClick={signOut}>Sign out</button>
+                  <button className="sign-out" onClick={signOut}>
+                    Sign out
+                  </button>
                 </div>
               </>
             ) : null}
