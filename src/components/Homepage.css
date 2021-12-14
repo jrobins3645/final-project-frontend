@@ -24,8 +24,8 @@
 
 .flip-card {
   background-color: transparent;
-  width: 216px;
-  height: 300px;
+  width: 288px;
+  height: 400px;
   perspective: 1000px;
 }
 
@@ -79,6 +79,11 @@
   height: 100%;
   border-radius: 11px;
 }
+
+.Homepage ul {
+  margin: 5px;
+}
+
 .Homepage button {
   padding: 4px;
   font-weight: bold;
@@ -87,7 +92,7 @@
   border: 2px solid black;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: black;
-  margin: 1.5em;
+  margin: 8px;
   box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
 }
 .Homepage button:active {
@@ -95,4 +100,10 @@
   color: white;
   box-shadow: none;
   transform: translateY(0.6em);
+}
+
+@media only screen and (max-width: 800px) {
+  .Homepage .flip-card .flip-card-inner {
+    transform: rotateY(0deg);
+  }
 }
