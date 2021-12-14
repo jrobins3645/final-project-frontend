@@ -10,6 +10,7 @@ import Popup from "./Popup";
 import TriviaContext from "../context/TriviaContext";
 
 const Quiz = () => {
+  const stringSimilarity = require("string-similarity");
   const {
     questionsCorrect,
     setQuestionsCorrect,
@@ -59,6 +60,7 @@ const Quiz = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
   useEffect(() => {
     // adds the IDs of the checked generations to the idList
     if (generations?.includes("1")) {
@@ -101,9 +103,9 @@ const Quiz = () => {
         idList.push(i);
       }
     }
-
     setShuffledIds(shuffle(idList));
   }, []);
+
   useEffect(() => {
     if (answer === currentPokemon?.name) {
       setQuestionsAnswered((prev) => prev + 1);
@@ -125,9 +127,20 @@ const Quiz = () => {
         )
       );
     }
-    console.log(shuffledIds);
-    console.log(currentPokemon);
   }, [shuffledIds, questionsAnswered, questionsCorrect, answer, counter]);
+
+  useEffect(() => {
+    if (currentPokemon) {
+      const similarity = stringSimilarity.compareTwoStrings(
+        currentPokemon!.name,
+        answer
+      );
+      console.log(similarity);
+      if (similarity >= 0.69) {
+        setAnswer(currentPokemon!.name);
+      }
+    }
+  }, [currentPokemon]);
 
   return (
     <div className="Quiz">

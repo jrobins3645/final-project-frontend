@@ -35,94 +35,96 @@ const Homepage = () => {
             <img className="card" src={cardImage} alt="card-pic" />
           </div>
           <div className="flip-card-back">
-            <h3>Original 151 Pokemon Quiz</h3>
+            <h3>Pick your generation Pokemon Quiz</h3>
             <p>Type the name of the pokemon that is shown.</p>
-            <p>You will have x time to answer as many questions as you can.</p>
-             <form onSubmit={submitHandler}>
-          <ul>
-            <li>
-              <input
-                type="checkbox"
-                name="gen1"
-                id="gen1"
-                checked={gen1}
-                onChange={(e) => setGen1(e.target.checked)}
-              />
-              <label htmlFor="gen1">Generation 1</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen2"
-                id="gen2"
-                checked={gen2}
-                onChange={(e) => setGen2(e.target.checked)}
-              />
-              <label htmlFor="gen2">Generation 2</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen3"
-                id="gen3"
-                checked={gen3}
-                onChange={(e) => setGen3(e.target.checked)}
-              />
-              <label htmlFor="gen3">Generation 3</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen4"
-                id="gen4"
-                checked={gen4}
-                onChange={(e) => setGen4(e.target.checked)}
-              />
-              <label htmlFor="gen4">Generation 4</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen5"
-                id="gen5"
-                checked={gen5}
-                onChange={(e) => setGen5(e.target.checked)}
-              />
-              <label htmlFor="gen5">Generation 5</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen6"
-                id="gen6"
-                checked={gen6}
-                onChange={(e) => setGen6(e.target.checked)}
-              />
-              <label htmlFor="gen6">Generation 6</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen7"
-                id="gen7"
-                checked={gen7}
-                onChange={(e) => setGen7(e.target.checked)}
-              />
-              <label htmlFor="gen7">Generation 7</label>
-            </li>
-            <li>
-              <input
-                type="checkbox"
-                name="gen8"
-                id="gen8"
-                checked={gen8}
-                onChange={(e) => setGen8(e.target.checked)}
-              />
-              <label htmlFor="gen8">Generation 8</label>
-            </li>
-          </ul>
-          <button onClick={submitHandler}>Start Quiz!</button>
-        </form>
+            <p>
+              You will have __ seconds to answer as many questions as you can.
+            </p>
+            <form onSubmit={submitHandler}>
+              <ul>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen1"
+                    id="gen1"
+                    checked={gen1}
+                    onChange={(e) => setGen1(e.target.checked)}
+                  />
+                  <label htmlFor="gen1">Generation 1</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen2"
+                    id="gen2"
+                    checked={gen2}
+                    onChange={(e) => setGen2(e.target.checked)}
+                  />
+                  <label htmlFor="gen2">Generation 2</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen3"
+                    id="gen3"
+                    checked={gen3}
+                    onChange={(e) => setGen3(e.target.checked)}
+                  />
+                  <label htmlFor="gen3">Generation 3</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen4"
+                    id="gen4"
+                    checked={gen4}
+                    onChange={(e) => setGen4(e.target.checked)}
+                  />
+                  <label htmlFor="gen4">Generation 4</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen5"
+                    id="gen5"
+                    checked={gen5}
+                    onChange={(e) => setGen5(e.target.checked)}
+                  />
+                  <label htmlFor="gen5">Generation 5</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen6"
+                    id="gen6"
+                    checked={gen6}
+                    onChange={(e) => setGen6(e.target.checked)}
+                  />
+                  <label htmlFor="gen6">Generation 6</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen7"
+                    id="gen7"
+                    checked={gen7}
+                    onChange={(e) => setGen7(e.target.checked)}
+                  />
+                  <label htmlFor="gen7">Generation 7</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="gen8"
+                    id="gen8"
+                    checked={gen8}
+                    onChange={(e) => setGen8(e.target.checked)}
+                  />
+                  <label htmlFor="gen8">Generation 8</label>
+                </li>
+              </ul>
+              <button onClick={submitHandler}>Start Quiz!</button>
+            </form>
           </div>
         </div>
       </div>
