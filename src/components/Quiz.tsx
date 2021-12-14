@@ -59,6 +59,7 @@ const Quiz = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
   useEffect(() => {
     // adds the IDs of the checked generations to the idList
     if (generations?.includes("1")) {
@@ -101,9 +102,9 @@ const Quiz = () => {
         idList.push(i);
       }
     }
-
     setShuffledIds(shuffle(idList));
   }, []);
+
   useEffect(() => {
     if (answer === currentPokemon?.name) {
       setQuestionsAnswered((prev) => prev + 1);
@@ -125,8 +126,14 @@ const Quiz = () => {
         )
       );
     }
-    console.log(shuffledIds);
-    console.log(currentPokemon);
+    const stringSimilarity = require("string-similarity");
+    const similarity = stringSimilarity.compareTwoStrings(
+      currentPokemon!.name,
+      answer
+    );
+    if (similarity >= 0.8) {
+      setAnswer(currentPokemon!.name);
+    }
   }, [shuffledIds, questionsAnswered, questionsCorrect, answer, counter]);
 
   return (

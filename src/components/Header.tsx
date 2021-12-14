@@ -50,15 +50,21 @@ const Header = () => {
           </button>
           <div className={`${showNav ? "mobile-content" : "desktop-content"}`}>
             <div className="menu-item">
-              <Link to="/leaderboard">Leaderboard</Link>
+              <Link to="/leaderboard" onClick={clickHandler}>
+                Leaderboard
+              </Link>
             </div>
             <div className="menu-item">
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={clickHandler}>
+                About
+              </Link>
             </div>
             {user ? (
               <>
                 <div className="menu-item">
-                  <Link to={`/profiles/${profile?.uid}`}>My Account</Link>
+                  <Link to={`/profiles/${profile?.uid}`} onClick={clickHandler}>
+                    My Account
+                  </Link>
                 </div>
                 <div className="menu-item">
                   <button className="sign-out" onClick={signOut}>
