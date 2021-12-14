@@ -10,6 +10,7 @@ import Popup from "./Popup";
 import TriviaContext from "../context/TriviaContext";
 
 const Quiz = () => {
+  const stringSimilarity = require("string-similarity");
   const {
     questionsCorrect,
     setQuestionsCorrect,
@@ -126,15 +127,20 @@ const Quiz = () => {
         )
       );
     }
-    const stringSimilarity = require("string-similarity");
-    const similarity = stringSimilarity.compareTwoStrings(
-      currentPokemon!.name,
-      answer
-    );
-    if (similarity >= 0.8) {
-      setAnswer(currentPokemon!.name);
-    }
   }, [shuffledIds, questionsAnswered, questionsCorrect, answer, counter]);
+
+  useEffect(() => {
+    if (currentPokemon) {
+      const similarity = stringSimilarity.compareTwoStrings(
+        currentPokemon!.name,
+        answer
+      );
+      console.log(similarity);
+      if (similarity >= 0.69) {
+        setAnswer(currentPokemon!.name);
+      }
+    }
+  }, [currentPokemon]);
 
   return (
     <div className="Quiz">
