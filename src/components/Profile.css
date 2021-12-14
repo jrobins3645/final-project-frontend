@@ -1,0 +1,107 @@
+.Profile {
+  display: flex;
+  font-family: "Press Start 2P", cursive;
+  font-size: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Profile .stats-container {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Profile .delete-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  color: cornsilk;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  margin-left: 20em;
+  border-top: 0px black solid;
+}
+
+.Profile .delete-button:active {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  color: cornsilk;
+  margin-left: 20em;
+  border-top: 0px black solid;
+  transform: translateY(0.6em);
+  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0.4);
+  border-top: 0px black solid;
+  border: 2px solid black;
+}
+
+.Profile .yes-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  color: cornsilk;
+  border-top: 0px black solid;
+  transform: translateY(0.6em);
+  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0.4);
+  border-top: 0px black solid;
+  border: 2px solid black;
+}
+
+.Profile .no-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  color: cornsilk;
+  border-top: 0px black solid;
+  transform: translateY(0.6em);
+  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0.4);
+  border-top: 0px black solid;
+  border: 2px solid black;
+}
+
+/* .Profile .verify-delete-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+} */
+
+.Profile .are-you-sure-popup {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+  height: 20em;
+  background-color: white;
+  position: absolute;
+}
+
+.Profile .are-you-sure-popup-container {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+}

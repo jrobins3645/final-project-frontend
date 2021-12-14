@@ -31,24 +31,34 @@ const Profile = () => {
 
   return (
     <div className="Profile">
-      <h2>Username: {profile?.username}</h2>
-      <h3>Personal High Score: {highScore} </h3>
-      <button onClick={() => setRequestDelete(true)}>Delete Account</button>
+      <div className="stats-container">
+        <h2>Username: {profile?.username}</h2>
+        <h3>Personal High Score: {highScore} </h3>
+      </div>
+      <button className="delete-button" onClick={() => setRequestDelete(true)}>
+        Delete Account
+      </button>
       {requestDelete ? (
-        <div className="verify-delete-container">
-          <p>
-            Are you absolutely sure you want to delete your account? All records
-            will be erased.
-          </p>
-          <button onClick={clickHandler}>YES, delete my account!</button>
-          <button
-            onClick={() => {
-              setRequestDelete(false);
-            }}
-          >
-            NO, I made a horrible mistake!
-          </button>
-        </div>
+        <>
+          <div className="are-you-sure-popup-container"></div>
+          <div className="are-you-sure-popup">
+            <p>
+              Are you absolutely sure you want to delete your account? All
+              records will be erased.
+            </p>
+            <button className="yes-button" onClick={clickHandler}>
+              YES, delete my account!
+            </button>
+            <button
+              className="no-button"
+              onClick={() => {
+                setRequestDelete(false);
+              }}
+            >
+              NO, I made a horrible mistake!
+            </button>
+          </div>
+        </>
       ) : null}
     </div>
   );

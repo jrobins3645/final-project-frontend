@@ -161,6 +161,8 @@ p {
     right: 0;
     border-radius: 0.5rem;
     border: 2px solid #ffde00;
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2);
   }
 
   .Header .burger:active {
@@ -168,5 +170,10 @@ p {
     color: #ffde00;
     box-shadow: none;
     transform: translateY(0.6em);
+  }
+  .Header .logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 0.7em;
   }
 }

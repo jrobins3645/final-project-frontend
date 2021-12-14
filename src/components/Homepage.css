@@ -14,9 +14,9 @@
   box-shadow: -5px 5px 5px grey;
 }
 
-.Homepage button {
-  margin: 1.5em;
-}
+/* .Homepage button {
+  margin: 1px;
+} */
 
 .Homepage .quiz-container :hover {
   transform: rotateY(180deg);
@@ -24,8 +24,8 @@
 
 .flip-card {
   background-color: transparent;
-  width: 216px;
-  height: 300px;
+  width: 288px;
+  height: 400px;
   perspective: 1000px;
 }
 
@@ -87,7 +87,7 @@
   border: 2px solid black;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: black;
-  margin: 1.5em;
+  /* margin: 1px; */
   box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
 }
 .Homepage button:active {
@@ -95,4 +95,16 @@
   color: white;
   box-shadow: none;
   transform: translateY(0.6em);
+}
+
+@media only screen and (max-width: 1000px) {
+  .Homepage .flip-card-back {
+    background-color: #cc0000;
+    color: black;
+    transform: rotateY(0deg);
+    border-radius: 11px;
+  }
+  .Homepage .flip-card:hover .flip-card-inner {
+    transform: rotateY(0deg);
+  }
 }
