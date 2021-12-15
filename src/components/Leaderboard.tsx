@@ -15,12 +15,12 @@ const Leaderboard = () => {
 
   return (
     <div className="Leaderboard">
-      <ol className="ball">
+      <ol className="leaderboard-list">
         {scores.map((score) => {
           return (
-            <div className="scores-row">
+            <div className="scores-row" key={score._id}>
               <div className="score">
-                <li className="list-item" key={score._id}>
+                <li className="list-item">
                   <img src={score.avatar} alt="Avatar" className="avatar" />
                   {score.username} has {score.score} points
                 </li>

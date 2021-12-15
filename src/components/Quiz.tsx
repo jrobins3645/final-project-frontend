@@ -30,37 +30,31 @@ const Quiz = () => {
   const [hintPoints, setHintPoints] = useState<number>(0);
   const [hintButton, setHintButton] = useState<boolean>(true);
   const [firstHintString, setFirstHintString] = useState("");
-
   let idList: number[] = [];
   const generations: string | null = new URLSearchParams(
     useLocation().search
   ).get("gen");
-
   const getFirstHint = () => {
     let nameArray = currentPokemon!.name.split("");
     let firstTwo = [];
     firstTwo.push(nameArray[0], nameArray[1]);
     setFirstHintString(`First two letters: ${firstTwo.join("").toUpperCase()}`);
   };
-
   const hintHandler = () => {
     setHintPoints((prev) => prev + 25);
     setHintButton(false);
     getFirstHint();
   };
-
   const newQuiz = () => {
     setScore(0);
     setQuestionsAnswered(0);
     setQuestionsCorrect(0);
   };
-
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     setQuestionsAnswered((prev) => prev + 1);
     setAnswer("");
   };
-
   const clickHandler = () => {
     const newScore: Score = {
       uid: profile!.uid,
@@ -74,7 +68,7 @@ const Quiz = () => {
 
   useEffect(() => {
     let interval: any = null;
-    let countdown: number = 5;
+    let countdown: number = 30;
     interval = setInterval(() => {
       countdown--;
       setSeconds(countdown);

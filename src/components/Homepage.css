@@ -3,29 +3,32 @@
   justify-content: center;
 }
 
-.Homepage h3 {
+.Homepage h1 {
+  justify-content: center;
   font-family: "Press Start 2P", cursive;
+  margin: 0;
+  padding: 20px;
   font-size: 100%;
+  height: 3em;
+  background-color: white;
+  border-radius: 12px 12px 0px 0px;
 }
 
-.Homepage .quiz-container {
-  border: 1px black solid;
-  width: 200px;
-  box-shadow: -5px 5px 5px grey;
+.Homepage .card {
+  height: 100%;
+  border-radius: 12px;
 }
 
-/* .Homepage button {
-  margin: 1px;
-} */
-
-.Homepage .quiz-container :hover {
-  transform: rotateY(180deg);
+.Homepage .rules-text {
+  padding: 8px;
+  font-size: 18px;
+  color: cornsilk;
 }
 
 .flip-card {
   background-color: transparent;
-  width: 288px;
-  height: 400px;
+  width: 360px;
+  height: 500px;
   perspective: 1000px;
 }
 
@@ -37,7 +40,7 @@
   transition: transform 0.6s;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2);
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
 .Homepage .flip-card:hover .flip-card-inner {
@@ -56,58 +59,22 @@
 .Homepage .flip-card-front {
   background-color: #bbb;
   color: black;
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
 .Homepage .flip-card-back {
   background-color: #cc0000;
   color: black;
   transform: rotateY(180deg);
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
-.Homepage h3 {
-  background-color: white;
-  height: 3em;
-  margin: 0;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 11px 11px 0px 0px;
-}
-
-.Homepage img {
-  height: 100%;
-  border-radius: 11px;
-}
-
-.Homepage ul {
-  margin: 5px;
-}
-
-.Homepage button {
-  padding: 4px;
-  font-weight: bold;
-  background-color: white;
-  border: none;
-  border: 2px solid black;
-  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-  color: black;
-  /* margin: 1px; */
-  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
-}
-.Homepage button:active {
-  background: black;
-  color: white;
-  box-shadow: none;
-  transform: translateY(0.6em);
-}
-
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 900px) {
   .Homepage .flip-card-back {
     background-color: #cc0000;
     color: black;
     transform: rotateY(0deg);
-    border-radius: 11px;
+    border-radius: 12px;
   }
   .Homepage .flip-card:hover .flip-card-inner {
     transform: rotateY(0deg);
