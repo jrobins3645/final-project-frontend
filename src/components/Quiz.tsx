@@ -135,7 +135,7 @@ const Quiz = () => {
       setCurrentPokemon(response)
     );
     if (questionsAnswered) {
-      setHintButton(true);
+      setHintButton(true);  
       setScore(
         parseInt(
           (
