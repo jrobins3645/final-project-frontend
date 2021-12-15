@@ -47,6 +47,26 @@
 }
 
 .Profile .yes-button {
+  width: 80%;
+  height: fit-content;
+
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 0.5rem;
+  color: cornsilk;
+  border-top: 0px black solid;
+  border-top: 0px black solid;
+  border: 2px solid black;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  margin-bottom: 8px;
+  margin-top: 10px;
+}
+
+.Profile .yes-button:active {
+  width: 80%;
+  height: fit-content;
   padding: 4px;
   font-weight: bold;
   background-color: #cc0000;
@@ -55,12 +75,29 @@
   color: cornsilk;
   border-top: 0px black solid;
   transform: translateY(0.6em);
-  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0.4);
+  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0);
   border-top: 0px black solid;
   border: 2px solid black;
 }
 
 .Profile .no-button {
+  width: 80%;
+  height: fit-content;
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 0.5rem;
+  color: cornsilk;
+  border-top: 0px black solid;
+  /* transform: translateY(0.6em); */
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  border-top: 0px black solid;
+  border: 2px solid black;
+}
+.Profile .no-button:active {
+  width: 80%;
+  height: fit-content;
   padding: 4px;
   font-weight: bold;
   background-color: #cc0000;
@@ -69,7 +106,7 @@
   color: cornsilk;
   border-top: 0px black solid;
   transform: translateY(0.6em);
-  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0.4);
+  box-shadow: 0em 0em black, 0 0em rgba(0, 0, 0, 0);
   border-top: 0px black solid;
   border: 2px solid black;
 }
@@ -89,20 +126,27 @@
 
 .Profile .are-you-sure-popup {
   display: flex;
+  align-items: center;
   flex-direction: column;
   width: 20em;
   height: 20em;
   background-color: #cc0000;
   position: fixed;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px;
   top: 100px;
-  /* border: 5px solid red; */
+  border: 5px black solid;
   padding: 0;
+  height: 15em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2);
+  z-index: 3;
 }
 .Profile .are-you-sure-text {
+  padding: 10px;
   background-color: white;
-  height: 100%;
+  height: fit-content;
+  border-radius: 15.5px 15.5px 0px 0px;
+  border-bottom: black 5px solid;
 }
 .Profile .are-you-sure-popup-container {
   width: 100vw;
@@ -112,4 +156,5 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 2;
 }
