@@ -48,6 +48,19 @@ h4 {
   margin: 10px;
 }
 
+.About .link {
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.About .link:hover {
+}
+
+.About .link-image {
+  height: 32px;
+}
+
 @media only screen and (max-width: 900px) {
   .About .group-member-content {
     flex-direction: column;

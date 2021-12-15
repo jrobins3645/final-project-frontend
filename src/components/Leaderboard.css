@@ -1,5 +1,6 @@
 .Leaderboard {
   display: flex;
+  justify-content: center;
   margin-top: 10px;
   background-color: #cc0000;
   padding: 10px;
