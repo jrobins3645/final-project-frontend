@@ -77,7 +77,7 @@ const About = () => {
             fast-paced environment, which will help him accomplish challenges
             with different teams and clients. Jeff is excited to utilize the
             technical skills gained at Grand Circus and work with a team of
-            like-minded individuals to hone my skills as a junior developer.
+            like-minded individuals to hone his skills as a junior developer.
           </p>
         </div>
       </div>
