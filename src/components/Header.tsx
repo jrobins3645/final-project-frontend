@@ -11,13 +11,11 @@ const Header = () => {
   const { profile, user, setScore, setQuestionsAnswered, setQuestionsCorrect } =
     useContext(TriviaContext);
   const [showNav, setShowNav] = useState(false);
-
   const newQuiz = () => {
     setScore(0);
     setQuestionsAnswered(0);
     setQuestionsCorrect(0);
   };
-
   const clickHandler = () => {
     if (showNav) {
       setShowNav(false);
@@ -28,15 +26,13 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <Link to="/" onClick={newQuiz}>
-        <div className="logo-title">
-          <img src={pokeballLogo} alt="logo" className="pokeball logo" />
-          <img
-            src={pokemon_trivia}
-            alt="Pokemon trivia title"
-            className="title"
-          />
-        </div>
+      <Link to="/" onClick={newQuiz} className="logo-title">
+        <img src={pokeballLogo} alt="pokeball" className="pokeball logo" />
+        <img
+          src={pokemon_trivia}
+          alt="Pokemon trivia title"
+          className="title"
+        />
       </Link>
       <div className="profile-menu">
         {profile ? (
@@ -66,7 +62,7 @@ const Header = () => {
                 About
               </Link>
             </div>
-            {user ? (
+            {user && (
               <>
                 <div className="menu-item">
                   <Link to={`/profiles/${profile?.uid}`} onClick={() => {}}>
@@ -79,7 +75,7 @@ const Header = () => {
                   </button>
                 </div>
               </>
-            ) : null}
+            )}
           </div>
         </nav>
       </div>

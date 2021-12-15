@@ -42,7 +42,7 @@ const Profile = () => {
         <>
           <div className="are-you-sure-popup-container"></div>
           <div className="are-you-sure-popup">
-            <p>
+            <p className="are-you-sure-text">
               Are you absolutely sure you want to delete your account? All
               records will be erased.
             </p>

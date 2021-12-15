@@ -1,0 +1,37 @@
+.GenerationPicker .generation-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  color: cornsilk;
+  font-size: 24px;
+}
+
+.GenerationPicker .start-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: black;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+.GenerationPicker .start-button:active {
+  background: black;
+  color: white;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+.gen-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gen-box-container input:checked ~ .new-gen-box {
+  background-color: red;
+}
+#gen-box {
+  height: 20px;
+  width: 20px;
+}
