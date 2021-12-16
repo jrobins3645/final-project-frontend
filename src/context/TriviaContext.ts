@@ -15,6 +15,7 @@ export interface TriviaContextModel {
   setQuestionsAnswered: React.Dispatch<React.SetStateAction<number>>;
   setQuestionsCorrect: React.Dispatch<React.SetStateAction<number>>;
   shuffle: (idList: number[]) => number[];
+  shuffleIds: (generations: string | null) => number[];
 }
 const defaultValue: TriviaContextModel = {
   user: null,
@@ -29,6 +30,7 @@ const defaultValue: TriviaContextModel = {
   setQuestionsAnswered: () => {},
   setQuestionsCorrect: () => {},
   shuffle: () => [],
+  shuffleIds: () => [],
 };
 const TriviaContext = createContext(defaultValue);
 export default TriviaContext;
