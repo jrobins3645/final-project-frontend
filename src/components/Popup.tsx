@@ -14,10 +14,15 @@ const Popup = () => {
         {user && !profile && <ProfileCreator />}
         {!user ? (
           <div className="sign-in">
-            <button onClick={signInWithGoogle}>Sign in with Google</button>
+            <button className="sign-in-button" onClick={signInWithGoogle}>
+              Sign in with Google
+            </button>
             <p>or</p>
             <Link to="/">
-              <button onClick={() => setGuestPopup(false)}>
+              <button
+                className="continue-button"
+                onClick={() => setGuestPopup(false)}
+              >
                 Continue as Guest
               </button>
             </Link>

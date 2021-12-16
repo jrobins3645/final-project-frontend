@@ -217,16 +217,21 @@ const Quiz = () => {
           </div>
         </>
       ) : (
-        <div className="scoring">
-          <p>
-            Questions Answered: {questionsAnswered} Questions Correct:{" "}
-            {questionsCorrect} Current Score: {score}
-          </p>
-          <Link to="/">
-            <button onClick={clickHandler} autoFocus={true}>
-              Submit Score
-            </button>
-          </Link>
+        <div className="container-for-scoring-container">
+          <div className="scoring-after-quiz">
+            <p className="stat">Questions Answered: {questionsAnswered}</p>
+            <p className="stat">Questions Correct: {questionsCorrect}</p>
+            <p className="stat">Current Score: {score}</p>
+            <Link to="/">
+              <button
+                className="submit-button"
+                onClick={clickHandler}
+                autoFocus={true}
+              >
+                Submit Score
+              </button>
+            </Link>
+          </div>
         </div>
       )}
 
