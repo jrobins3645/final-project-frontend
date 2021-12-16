@@ -25,15 +25,17 @@ const QuizScore = ({ questionsAnswered, questionsCorrect, score }: Props) => {
 
   return (
     <div className="QuizScore">
-      <p className="quiz-results">
-        Questions Answered: {questionsAnswered}
-        <br />
-        Questions Correct: {questionsCorrect}
-        <br />
-        Final Score: {score}
-      </p>
+      <div className="quiz-results">
+        <p>Questions Answered: {questionsAnswered}</p>
+        <p> Questions Correct: {questionsCorrect}</p>
+        <p> Final Score: {score}</p>
+      </div>
       <Link to="/">
-        <button onClick={clickHandler} autoFocus={true}>
+        <button
+          className="submit-button"
+          onClick={clickHandler}
+          autoFocus={true}
+        >
           Submit Score
         </button>
       </Link>

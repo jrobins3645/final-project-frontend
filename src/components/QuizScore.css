@@ -1,0 +1,23 @@
+.QuizScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.QuizScore .quiz-results {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  width: fit-content;
+  height: 150px;
+}

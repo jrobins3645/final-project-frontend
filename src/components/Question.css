@@ -4,3 +4,10 @@
   width: 20em;
   height: 20em;
 }
+
+@media only screen and (max-width: 600px) {
+  .Question .pokemon-pic {
+    width: 15em;
+    height: 15em;
+  }
+}
