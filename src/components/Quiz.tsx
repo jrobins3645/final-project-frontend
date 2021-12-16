@@ -1,78 +1,53 @@
-import "./Quiz.css";
-import Pokemon from "../models/Pokemon";
-import Question from "./Question";
-import { FormEvent, useContext, useEffect, useState } from "react";
-import { getPokemonById } from "../services/PokemonService";
-import { addScore } from "../services/ScoreService";
-import Score from "../models/Score";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Popup from "./Popup";
 import TriviaContext from "../context/TriviaContext";
+import Pokemon from "../models/Pokemon";
+import { getPokemonById } from "../services/PokemonService";
+import Popup from "./Popup";
+import QuizForm from "./QuizForm";
+import QuizScore from "./QuizScore";
+import "./Quiz.css";
+import QuizCorrect from "./QuizCorrect";
 
 const Quiz = () => {
-  const stringSimilarity = require("string-similarity");
-  const {
-    questionsCorrect,
-    setQuestionsCorrect,
-    questionsAnswered,
-    setQuestionsAnswered,
-    profile,
-    guestPopup,
-    score,
-    setScore,
-    shuffle,
-  } = useContext(TriviaContext);
-  const [counter, setCounter] = useState(0);
-  const [currentPokemon, setCurrentPokemon] = useState<Pokemon | undefined>();
-  const [answer, setAnswer] = useState("");
-  const [seconds, setSeconds] = useState(0);
+  const resetQuiz = useRef(false);
+  const gotPokemon = useRef(false);
+  const [quizSeconds, setQuizSeconds] = useState(60);
+  const [correct, setCorrect] = useState(false);
   const [shuffledIds, setShuffledIds] = useState<number[]>([]);
-  const [hintPoints, setHintPoints] = useState<number>(0);
-  const [hintButton, setHintButton] = useState<boolean>(true);
-  const [firstHintString, setFirstHintString] = useState("");
-  let idList: number[] = [];
+  const [currentPokemon, setCurrentPokemon] = useState<Pokemon>();
+  const [idCounter, setIdCounter] = useState(0);
+  const [answer, setAnswer] = useState("");
+  const [questionsAnswered, setQuestionsAnswered] = useState(0);
+  const [questionsCorrect, setQuestionsCorrect] = useState(0);
+  const [score, setScore] = useState(0);
+  const [hintButton, setHintButton] = useState(true);
+  const [hintPoints, setHintPoints] = useState(0);
+  const [hintString, setHintString] = useState("");
+  const { guestPopup, profile, shuffleIds } = useContext(TriviaContext);
+  const stringSimilarity = require("string-similarity");
   const generations: string | null = new URLSearchParams(
     useLocation().search
   ).get("gen");
-  const getFirstHint = () => {
-    let nameArray = currentPokemon!.name.split("");
-    let firstTwo = [];
-    firstTwo.push(nameArray[0], nameArray[1]);
-    setFirstHintString(`First two letters: ${firstTwo.join("").toUpperCase()}`);
-  };
   const hintHandler = () => {
     setHintPoints((prev) => prev + 25);
     setHintButton(false);
-    getFirstHint();
-  };
-  const newQuiz = () => {
-    setScore(0);
-    setQuestionsAnswered(0);
-    setQuestionsCorrect(0);
-  };
-  const submitHandler = (e: FormEvent) => {
-    e.preventDefault();
-    setQuestionsAnswered((prev) => prev + 1);
-    setAnswer("");
-  };
-  const clickHandler = () => {
-    const newScore: Score = {
-      uid: profile!.uid,
-      avatar: profile!.avatar,
-      username: profile!.username,
-      score: score,
-    };
-    addScore(newScore);
-    newQuiz();
+    const nameArray: string[] = currentPokemon!.name.split("");
+    setHintString(
+      `First two letters: ${[nameArray[0], nameArray[1]]
+        .join("")
+        .toUpperCase()}`
+    );
   };
 
+  // QUIZ COUNTDOWN
   useEffect(() => {
     let interval: any = null;
-    let countdown: number = 30;
+    let countdown: number = 60;
     interval = setInterval(() => {
       countdown--;
-      setSeconds(countdown);
-      if (countdown === 0) {
+      setQuizSeconds(countdown);
+      if (!countdown) {
         clearInterval(interval);
       }
     }, 1000);
@@ -80,62 +55,36 @@ const Quiz = () => {
   }, []);
 
   useEffect(() => {
-    // adds the IDs of the checked generations to the idList
-    if (generations?.includes("1")) {
-      for (let i = 1; i < 151; i++) {
-        idList.push(i);
-      }
+    if (!resetQuiz.current) {
+      setShuffledIds([]);
+      setShuffledIds(shuffleIds(generations));
+      setScore(0);
+      setQuestionsAnswered(0);
+      setQuestionsCorrect(0);
+      resetQuiz.current = true;
     }
-    if (generations?.includes("2")) {
-      for (let i = 152; i < 251; i++) {
-        idList.push(i);
-      }
+    if (shuffledIds.length) {
+      getPokemonById(shuffledIds[idCounter]).then((response) =>
+        setCurrentPokemon(response)
+      );
     }
-    if (generations?.includes("3")) {
-      for (let i = 252; i < 386; i++) {
-        idList.push(i);
-      }
-    }
-    if (generations?.includes("4")) {
-      for (let i = 387; i < 493; i++) {
-        idList.push(i);
-      }
-    }
-    if (generations?.includes("5")) {
-      for (let i = 494; i < 649; i++) {
-        idList.push(i);
-      }
-    }
-    if (generations?.includes("6")) {
-      for (let i = 650; i < 721; i++) {
-        idList.push(i);
-      }
-    }
-    if (generations?.includes("7")) {
-      for (let i = 722; i < 809; i++) {
-        idList.push(i);
-      }
-    }
-    if (generations?.includes("8")) {
-      for (let i = 810; i < 898; i++) {
-        idList.push(i);
-      }
-    }
-    setShuffledIds(shuffle(idList));
-  }, []);
 
-  useEffect(() => {
-    if (answer === currentPokemon?.name) {
-      setQuestionsAnswered((prev) => prev + 1);
-      setQuestionsCorrect((prev) => prev + 1);
-      setAnswer("");
-      setCounter((prev) => prev + 1);
+    if (currentPokemon) {
+      const similarity = stringSimilarity.compareTwoStrings(
+        currentPokemon!.name,
+        answer
+      );
+      console.log(similarity);
+      if (similarity >= 0.7) {
+        setAnswer(currentPokemon.name);
+      }
     }
-    getPokemonById(shuffledIds[counter]).then((response) =>
-      setCurrentPokemon(response)
-    );
+    if (answer === currentPokemon?.name) {
+      setAnswer("");
+      setCorrect(true);
+      gotPokemon.current = false;
+    }
     if (questionsAnswered) {
-      setHintButton(true);
       setScore(
         parseInt(
           (
@@ -145,92 +94,72 @@ const Quiz = () => {
         )
       );
     }
-  }, [shuffledIds, questionsAnswered, questionsCorrect, answer, counter]);
+    console.log("use effect ran");
+    console.log(idCounter, shuffledIds);
+  }, [
+    shuffledIds,
+    answer,
+    questionsAnswered,
+    generations,
+    hintPoints,
+    idCounter,
+    questionsCorrect,
+    stringSimilarity,
+    quizSeconds,
+    shuffleIds,
+  ]);
 
   useEffect(() => {
-    if (currentPokemon) {
-      const similarity = stringSimilarity.compareTwoStrings(
-        currentPokemon!.name,
-        answer
-      );
-      console.log(similarity);
-      if (similarity >= 0.7) {
-        setAnswer(currentPokemon!.name);
-      }
-    }
-  }, [currentPokemon]);
+    setHintButton(true);
+  }, [questionsAnswered]);
 
   return (
     <div className="Quiz">
-      {seconds ? (
+      {quizSeconds ? (
         <>
-          <div className="top-left">
-            <div className="scoring">
-              <p>Question: {questionsAnswered + 1}</p>
-              <p>Correct: {questionsCorrect} </p>
-              <p> Current Score: {score}</p>
-            </div>
+          <div className="scoring">
+            <p>Question: {questionsAnswered + 1}</p>
+            <p>Correct: {questionsCorrect} </p>
+            <p> Current Score: {score}</p>
           </div>
-          <div className="top-right">
-            <div></div>
-            <div>Time Remaining: {seconds}</div>
+          <p>Time Remaining: {quizSeconds}</p>
+          {!correct ? (
+            <>
+              <QuizForm
+                answer={answer}
+                currentPokemon={currentPokemon}
+                setAnswer={setAnswer}
+                setQuestionsAnswered={setQuestionsAnswered}
+                setIdCounter={setIdCounter}
+              />
+              {hintButton ? (
+                <button onClick={hintHandler}>Hint</button>
+              ) : (
+                <p>{hintString}</p>
+              )}
+            </>
+          ) : (
+            <QuizCorrect
+              setCorrect={setCorrect}
+              setQuestionsAnswered={setQuestionsAnswered}
+              setQuestionsCorrect={setQuestionsCorrect}
+              setIdCounter={setIdCounter}
+            />
+          )}
 
-            <form onSubmit={submitHandler}>
-              <Question currentPokemon={currentPokemon!} />
-              <p className={`${hintButton ? "hide" : "hint"}`}>
-                {firstHintString}
-              </p>
-              <label htmlFor="answer">Answer Here:</label>
-              <div className="conjoined">
-                <div className="answer-button">
-                  <input
-                    className="idk"
-                    autoComplete="off"
-                    type="text"
-                    name="answer"
-                    id="answer"
-                    value={answer}
-                    onChange={(value) => setAnswer(value.target.value)}
-                    autoFocus
-                  />
-                  <button
-                    className="I-dont-know-button"
-                    onClick={() => setCounter((prev) => prev + 1)}
-                  >
-                    I don't know
-                  </button>
-                </div>
-              </div>
-            </form>
-            <p className="hint"></p>
-            <button
-              onClick={hintHandler}
-              className={`${hintButton ? "hint-button" : "hide"}`}
-            >
-              Hint
-            </button>
-            <Link to="/">
-              <button className="quit-button" onClick={newQuiz}>
-                Quit Quiz
-              </button>
-            </Link>
-          </div>
+          <Link to="/">
+            <button className="quit-button">Quit Quiz</button>
+          </Link>
         </>
       ) : (
-        <div className="scoring">
-          <p>
-            Questions Answered: {questionsAnswered} Questions Correct:{" "}
-            {questionsCorrect} Current Score: {score}
-          </p>
-          <Link to="/">
-            <button onClick={clickHandler} autoFocus={true}>
-              Submit Score
-            </button>
-          </Link>
-        </div>
+        <QuizScore
+          questionsAnswered={questionsAnswered}
+          questionsCorrect={questionsCorrect}
+          score={score}
+        />
       )}
 
-      {!guestPopup && !seconds && !profile ? <Popup /> : <></>}
+      {!guestPopup && !quizSeconds && !profile && <Popup />}
     </div>
   );
 };
