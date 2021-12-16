@@ -28,10 +28,11 @@
   justify-content: center;
   align-items: center;
 }
-.gen-box-container input:checked ~ .new-gen-box {
-  background-color: red;
+.gen-box {
+  height: 0px;
+  width: 0px;
 }
-#gen-box {
-  height: 20px;
-  width: 20px;
+.new-checkbox {
+  height: 32px;
+  padding-right: 8px;
 }

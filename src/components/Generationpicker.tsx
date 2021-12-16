@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
+import pokeball from "../images/faviconball.png";
 import "./GenerationPicker.css";
 
 const GenerationPicker = () => {
@@ -35,10 +36,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen1"
-              id="gen-box"
+              id="gen1"
+              className="gen-box"
               checked={gen1}
               onChange={(e) => setGen1(e.target.checked)}
             />
+            <div className="new-checkbox">{gen1 && <img src={pokeball} />}</div>
             Generation 1
           </label>
         </li>
@@ -47,10 +50,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen2"
-              id="gen-box"
+              id="gen2"
+              className="gen-box"
               checked={gen2}
               onChange={(e) => setGen2(e.target.checked)}
             />
+            <div className="new-checkbox">{gen2 && <img src={pokeball} />}</div>
             Generation 2
           </label>
         </li>
@@ -59,10 +64,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen3"
-              id="gen-box"
+              id="gen3"
+              className="gen-box"
               checked={gen3}
               onChange={(e) => setGen3(e.target.checked)}
             />
+            <div className="new-checkbox">{gen3 && <img src={pokeball} />}</div>
             Generation 3
           </label>
         </li>
@@ -71,10 +78,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen4"
-              id="gen-box"
+              id="gen4"
+              className="gen-box"
               checked={gen4}
               onChange={(e) => setGen4(e.target.checked)}
             />
+            <div className="new-checkbox">{gen4 && <img src={pokeball} />}</div>
             Generation 4
           </label>
         </li>
@@ -83,10 +92,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen5"
-              id="gen-box"
+              id="gen5"
+              className="gen-box"
               checked={gen5}
               onChange={(e) => setGen5(e.target.checked)}
             />
+            <div className="new-checkbox">{gen5 && <img src={pokeball} />}</div>
             Generation 5
           </label>
         </li>
@@ -95,10 +106,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen6"
-              id="gen-box"
+              id="gen6"
+              className="gen-box"
               checked={gen6}
               onChange={(e) => setGen6(e.target.checked)}
             />
+            <div className="new-checkbox">{gen6 && <img src={pokeball} />}</div>
             Generation 6
           </label>
         </li>
@@ -107,10 +120,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen7"
-              id="gen-box"
+              id="gen7"
+              className="gen-box"
               checked={gen7}
               onChange={(e) => setGen7(e.target.checked)}
             />
+            <div className="new-checkbox">{gen7 && <img src={pokeball} />}</div>
             Generation 7
           </label>
         </li>
@@ -119,10 +134,12 @@ const GenerationPicker = () => {
             <input
               type="checkbox"
               name="gen8"
-              id="gen-box"
+              id="gen8"
+              className="gen-box"
               checked={gen8}
               onChange={(e) => setGen8(e.target.checked)}
             />
+            <div className="new-checkbox">{gen8 && <img src={pokeball} />}</div>
             Generation 8
           </label>
         </li>
