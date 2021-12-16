@@ -3,15 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: cornsilk;
+  /* color: cornsilk; */
 }
 
 .ProfileCreator .element {
+  color: black;
   margin: 12px;
+  margin-left: 0px;
+  float: left;
 }
 
 .ProfileCreator .username input {
-  border: solid #0075be 2px;
   border-radius: 4px;
   margin: 4px;
 }
@@ -21,4 +23,90 @@
   justify-content: center;
   align-items: center;
   width: 178px;
+}
+
+.ProfileCreator .close-popup {
+  /* margin: 3px; */
+  margin-left: 15px;
+  /* margin-bottom: 10px; */
+
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  /* margin: 1.5em; */
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  height: 20px;
+  width: 20px;
+}
+
+.ProfileCreator .close-popup:hover {
+  cursor: grab;
+}
+
+.ProfileCreator .close-popup:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+.ProfileCreator .top-of-profile-creator {
+  display: flex;
+
+  height: 70px;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+  border: black 1px solid;
+  padding-top: 15px;
+}
+
+.ProfileCreator button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 20px;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.ProfileCreator .submit-button {
+  margin: 0px;
+}
+
+.ProfileCreator button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+.ProfileCreator .file-element {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  /* opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute; */
+}
+
+.ProfileCreator button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
 }

@@ -43,11 +43,13 @@ const ProfileCreator = () => {
 
   return (
     <div>
-      <p className="close-popup" onClick={signOut}>
-        X
-      </p>
       <form className="ProfileCreator" onSubmit={submitHandler}>
-        <h2 className="element">Create Account</h2>
+        <div className="top-of-profile-creator">
+          <p className="close-popup" onClick={signOut}>
+            X
+          </p>
+          <h2 className="element">Create Account</h2>
+        </div>
         <label htmlFor="username" className="username element">
           Username
           <input
@@ -62,12 +64,12 @@ const ProfileCreator = () => {
             autoComplete="off"
           />
         </label>
-        <label htmlFor="file element">
+        <label htmlFor="">
           Upload Avatar
-          <input ref={fileInputRef} type="file" className="file element" />
+          <input ref={fileInputRef} type="file" className="file-element" />
         </label>
 
-        <button className="element">Submit</button>
+        <button className="submit-button">Submit</button>
       </form>
     </div>
   );
