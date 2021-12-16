@@ -4,9 +4,11 @@
   position: fixed;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
   top: 0;
   height: 100%;
   width: 100%;
+  z-index: 3;
 }
 .Popup {
   display: flex;
@@ -18,6 +20,47 @@
   background-color: #cc0000;
   height: 300px;
   width: 300px;
-  border: solid #0075be 4px;
-  border-radius: 12px;
+  border: black 1px solid;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2);
+  height: 260px;
+  padding-bottom: 15px;
+}
+
+.Popup .sign-in-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Popup .sign-in-button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+.Popup .continue-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Popup .continue-button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
 }

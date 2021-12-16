@@ -146,7 +146,6 @@ const Quiz = () => {
               setIdCounter={setIdCounter}
             />
           )}
-
           <Link to="/">
             <button className="quit-button">Quit Quiz</button>
           </Link>

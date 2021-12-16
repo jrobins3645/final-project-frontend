@@ -1,0 +1,117 @@
+.Quiz {
+  font-family: "Press Start 2P", cursive;
+}
+.Quiz .scoring {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 1.5em;
+}
+
+.Quiz .quit-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Quiz .quit-button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+input[type="text"] {
+  border: black 1px solid;
+  border-radius: 4px 0px 0px 4px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.Quiz .I-dont-know-button {
+  border-radius: 0px 4px 4px 0px;
+  background-color: #cc0000;
+  border: black 1px solid;
+  height: 20px;
+  color: cornsilk;
+}
+
+.Quiz .hide {
+  display: none;
+}
+
+.Quiz .hint-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Quiz .hint-button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+.Quiz .submit-button {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Quiz .submit-button:active {
+  background: #3b4cca;
+  color: #ffde00;
+  box-shadow: none;
+  transform: translateY(0.6em);
+}
+
+.Quiz .scoring-after-quiz {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #cc0000;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+  width: fit-content;
+}
+
+.Quiz .stat {
+  padding: 4px;
+  font-weight: bold;
+  background-color: #3b4cca;
+  border: none;
+  border: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffde00;
+  margin: 1.5em;
+  box-shadow: 0em 0.6em black, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+.Quiz .container-for-scoring-container {
+  display: flex;
+  justify-content: center;
+}

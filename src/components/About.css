@@ -1,0 +1,69 @@
+.About h1,
+h2,
+h3,
+h4 {
+  font-family: "Press Start 2P", cursive;
+}
+
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.About .group-member {
+  justify-content: center;
+  margin: 15px;
+  border: 1px solid black;
+  background-color: #cc0000;
+  border-radius: 10px;
+  width: 70%;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1.2);
+}
+
+.About .white {
+  background-color: white;
+  margin: 0;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.About .group-member-content {
+  display: flex;
+  margin: 15px;
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.About .profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.About .about-paragraph {
+  text-align: center;
+  margin: 10px;
+}
+
+.About .link {
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* .About .link:hover {
+} */
+
+.About .link-image {
+  height: 32px;
+}
+
+@media only screen and (max-width: 900px) {
+  .About .group-member-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
