@@ -115,3 +115,7 @@ input:focus {
   display: flex;
   justify-content: center;
 }
+
+.Quiz .time-left {
+  margin-bottom: 5px;
+}

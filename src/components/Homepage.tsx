@@ -20,7 +20,7 @@ const Homepage = () => {
             <div className="rules-text">
               <p>Type the name of the pokemon that is shown.</p>
               <p>
-                You will have __ seconds to answer as many questions as you can.
+                You will have 60 seconds to answer as many questions as you can.
               </p>
             </div>
             <GenerationPicker />

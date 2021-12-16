@@ -1,0 +1,8 @@
+.QuizCorrect .correct-pika {
+  border: #cc0000 solid 10px;
+}
+
+.QuizCorrect .correct-text {
+  color: rgb(0, 190, 0);
+  margin: 5px;
+}

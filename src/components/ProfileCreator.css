@@ -44,7 +44,7 @@
 }
 
 .ProfileCreator .close-popup:hover {
-  cursor: grab;
+  cursor: pointer;
 }
 
 .ProfileCreator .close-popup:active {

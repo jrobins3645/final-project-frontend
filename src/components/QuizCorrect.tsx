@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./QuizCorrect.css";
+import correct from "../images/correct.jpg";
 
 interface Props {
   setCorrect: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,7 +22,7 @@ const QuizCorrect = ({
     setQuestionsCorrect((prev) => prev + 1);
     setIdCounter((prev) => prev + 1);
     let interval: any = null;
-    let countdown: number = 1;
+    let countdown: number = 2;
     interval = setInterval(() => {
       countdown--;
       setCorrectSeconds(countdown);
@@ -40,8 +41,9 @@ const QuizCorrect = ({
 
   return (
     <div className="QuizCorrect">
-      <p>YOU ARE CORRECT</p>
+      <p className="correct-text">YOU ARE CORRECT</p>
       <p>{correctSeconds}</p>
+      <img className="correct-pika" src={correct} alt="Correct pikachu heart" />
     </div>
   );
 };

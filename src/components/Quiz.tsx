@@ -122,7 +122,7 @@ const Quiz = () => {
             <p>Correct: {questionsCorrect} </p>
             <p> Current Score: {score}</p>
           </div>
-          <p>Time Remaining: {quizSeconds}</p>
+          <p className="time-left">Time Remaining: {quizSeconds}</p>
           {!correct ? (
             <>
               <QuizForm
@@ -133,7 +133,9 @@ const Quiz = () => {
                 setIdCounter={setIdCounter}
               />
               {hintButton ? (
-                <button onClick={hintHandler}>Hint</button>
+                <button className="hint-button" onClick={hintHandler}>
+                  Hint
+                </button>
               ) : (
                 <p>{hintString}</p>
               )}
