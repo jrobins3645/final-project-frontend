@@ -22,7 +22,7 @@ const QuizCorrect = ({
     setQuestionsCorrect((prev) => prev + 1);
     setIdCounter((prev) => prev + 1);
     let interval: any = null;
-    let countdown: number = 2;
+    let countdown: number = 1;
     interval = setInterval(() => {
       countdown--;
       setCorrectSeconds(countdown);
@@ -42,7 +42,6 @@ const QuizCorrect = ({
   return (
     <div className="QuizCorrect">
       <p className="correct-text">YOU ARE CORRECT</p>
-      <p>{correctSeconds}</p>
       <img className="correct-pika" src={correct} alt="Correct pikachu heart" />
     </div>
   );

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import pokeballLogo from "../images/pokeball.png";
-import pokemon_trivia from "../images/pokemon_trivia.png";
+import whoThatPokemon from "../images/whoThatPokemon.png";
 import defaultProfilePic from "../images/defaultProfilePic.jpg";
 import "./Header.css";
 import TriviaContext from "../context/TriviaContext";
@@ -29,7 +29,7 @@ const Header = () => {
       <Link to="/" onClick={newQuiz} className="logo-title">
         <img src={pokeballLogo} alt="pokeball" className="pokeball logo" />
         <img
-          src={pokemon_trivia}
+          src={whoThatPokemon}
           alt="Pokemon trivia title"
           className="title"
         />

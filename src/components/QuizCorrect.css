@@ -5,4 +5,11 @@
 .QuizCorrect .correct-text {
   color: rgb(0, 190, 0);
   margin: 5px;
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .QuizCorrect .correct-pika {
+    width: 300px;
+  }
 }

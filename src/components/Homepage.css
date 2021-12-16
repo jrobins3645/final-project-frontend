@@ -25,6 +25,10 @@
   color: cornsilk;
 }
 
+.Homepage .p {
+  font-size: 16px;
+}
+
 .flip-card {
   background-color: transparent;
   width: 378px;

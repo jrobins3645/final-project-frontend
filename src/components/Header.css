@@ -13,6 +13,11 @@ p {
   padding: 0px;
   margin-bottom: 1.5em;
 }
+
+.Header .title {
+  margin-left: 8px;
+}
+
 .Header .logo-title {
   display: flex;
   flex-wrap: wrap;

@@ -18,9 +18,14 @@ const Homepage = () => {
           <div className="flip-card-back">
             <h1>Pick your generation Pokemon Quiz</h1>
             <div className="rules-text">
-              <p>Type the name of the pokemon that is shown.</p>
-              <p>
+              <p className="p">
                 You will have 60 seconds to answer as many questions as you can.
+                Type the name of the pokemon shown.
+              </p>
+              <p className="p">Select at least 1 generation from below.</p>
+              <p className="p">
+                You will automatically get the answer right if 70% of your guess
+                is correct.
               </p>
             </div>
             <GenerationPicker />
