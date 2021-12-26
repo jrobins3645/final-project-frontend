@@ -124,7 +124,6 @@ const Quiz = () => {
             <p>Question: {questionsAnswered + 1}</p>
             <p>Correct: {questionsCorrect} </p>
             <p> Current Score: {score}</p>
-            <p>{currentPokemon?.name}</p>
           </div>
           <p className="time-left">Time Remaining: {quizSeconds}</p>
           {!correct ? (
