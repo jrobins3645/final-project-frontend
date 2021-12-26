@@ -9,6 +9,7 @@ export interface TriviaContextModel {
   score: number;
   questionsAnswered: number;
   questionsCorrect: number;
+  genCounter: number;
   setScore: (score: number) => void;
   setProfile: (profile: Profile) => void;
   setGuestPopup: (boolean: boolean) => void;
@@ -24,6 +25,7 @@ const defaultValue: TriviaContextModel = {
   score: 0,
   questionsAnswered: 0,
   questionsCorrect: 0,
+  genCounter: 0,
   setScore: () => {},
   setGuestPopup: () => {},
   setProfile: () => {},

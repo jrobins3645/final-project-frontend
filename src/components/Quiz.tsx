@@ -24,7 +24,8 @@ const Quiz = () => {
   const [hintButton, setHintButton] = useState(true);
   const [hintPoints, setHintPoints] = useState(0);
   const [hintString, setHintString] = useState("");
-  const { guestPopup, profile, shuffleIds } = useContext(TriviaContext);
+  const { guestPopup, profile, genCounter, shuffleIds } =
+    useContext(TriviaContext);
   const stringSimilarity = require("string-similarity");
   const generations: string | null = new URLSearchParams(
     useLocation().search
@@ -71,8 +72,8 @@ const Quiz = () => {
 
     if (currentPokemon) {
       const similarity = stringSimilarity.compareTwoStrings(
-        currentPokemon!.name,
-        answer
+        currentPokemon!.name.replaceAll("-", " "),
+        answer.toLowerCase()
       );
       console.log(similarity);
       if (similarity >= 0.7) {
@@ -88,14 +89,16 @@ const Quiz = () => {
       setScore(
         parseInt(
           (
-            questionsCorrect * 100 * (questionsCorrect / questionsAnswered) -
+            questionsCorrect *
+              100 *
+              genCounter *
+              (questionsCorrect / questionsAnswered) -
             hintPoints
           ).toString()
         )
       );
     }
     console.log("use effect ran");
-    console.log(idCounter, shuffledIds);
   }, [
     shuffledIds,
     answer,
@@ -121,6 +124,7 @@ const Quiz = () => {
             <p>Question: {questionsAnswered + 1}</p>
             <p>Correct: {questionsCorrect} </p>
             <p> Current Score: {score}</p>
+            <p>{currentPokemon?.name}</p>
           </div>
           <p className="time-left">Time Remaining: {quizSeconds}</p>
           {!correct ? (
