@@ -41,7 +41,9 @@ const GenerationPicker = () => {
               checked={gen1}
               onChange={(e) => setGen1(e.target.checked)}
             />
-            <div className="new-checkbox">{gen1 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen1 && <img src={pokeball} alt="" />}
+            </div>
             Generation 1
           </label>
         </li>
@@ -55,7 +57,9 @@ const GenerationPicker = () => {
               checked={gen2}
               onChange={(e) => setGen2(e.target.checked)}
             />
-            <div className="new-checkbox">{gen2 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen2 && <img src={pokeball} alt="" />}
+            </div>
             Generation 2
           </label>
         </li>
@@ -69,7 +73,9 @@ const GenerationPicker = () => {
               checked={gen3}
               onChange={(e) => setGen3(e.target.checked)}
             />
-            <div className="new-checkbox">{gen3 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen3 && <img src={pokeball} alt="" />}
+            </div>
             Generation 3
           </label>
         </li>
@@ -83,7 +89,9 @@ const GenerationPicker = () => {
               checked={gen4}
               onChange={(e) => setGen4(e.target.checked)}
             />
-            <div className="new-checkbox">{gen4 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen4 && <img src={pokeball} alt="" />}
+            </div>
             Generation 4
           </label>
         </li>
@@ -97,7 +105,9 @@ const GenerationPicker = () => {
               checked={gen5}
               onChange={(e) => setGen5(e.target.checked)}
             />
-            <div className="new-checkbox">{gen5 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen5 && <img src={pokeball} alt="" />}
+            </div>
             Generation 5
           </label>
         </li>
@@ -111,7 +121,9 @@ const GenerationPicker = () => {
               checked={gen6}
               onChange={(e) => setGen6(e.target.checked)}
             />
-            <div className="new-checkbox">{gen6 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen6 && <img src={pokeball} alt="" />}
+            </div>
             Generation 6
           </label>
         </li>
@@ -125,7 +137,9 @@ const GenerationPicker = () => {
               checked={gen7}
               onChange={(e) => setGen7(e.target.checked)}
             />
-            <div className="new-checkbox">{gen7 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen7 && <img src={pokeball} alt="" />}
+            </div>
             Generation 7
           </label>
         </li>
@@ -139,7 +153,9 @@ const GenerationPicker = () => {
               checked={gen8}
               onChange={(e) => setGen8(e.target.checked)}
             />
-            <div className="new-checkbox">{gen8 && <img src={pokeball} />}</div>
+            <div className="new-checkbox">
+              {gen8 && <img src={pokeball} alt="" />}
+            </div>
             Generation 8
           </label>
         </li>

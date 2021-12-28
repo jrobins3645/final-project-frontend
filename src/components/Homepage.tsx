@@ -19,14 +19,13 @@ const Homepage = () => {
             <h1>Pick your generation Pokemon Quiz</h1>
             <div className="rules-text">
               <p className="p">
-                You will have 60 seconds to answer as many questions as you can.
-                Type the name of the pokemon shown.
+                You will have 60 seconds to type the name of the Pokemon shown.
               </p>
-              <p className="p">Select at least 1 generation from below.</p>
               <p className="p">
                 You will automatically get the answer right if 70% of your guess
                 is correct.
               </p>
+              <p className="p">Select at least 1 generation from below.</p>
             </div>
             <GenerationPicker />
           </div>

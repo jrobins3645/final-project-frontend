@@ -13,6 +13,7 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
   const [questionsAnswered, setQuestionsAnswered] = useState<number>(0);
   const [questionsCorrect, setQuestionsCorrect] = useState<number>(0);
   const [idList, setIdList] = useState<number[]>([]);
+  const [genCounter, setGenCounter] = useState(0);
 
   const shuffle = (array: number[]) => {
     let currentIndex = array.length,
@@ -33,46 +34,56 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
 
   const shuffleIds = (generations: string | null) => {
     setIdList([]);
+    let genCount: number = 0;
     if (generations?.includes("1")) {
       for (let i = 1; i < 151; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("2")) {
       for (let i = 152; i < 251; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("3")) {
       for (let i = 252; i < 386; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("4")) {
       for (let i = 387; i < 493; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("5")) {
       for (let i = 494; i < 649; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("6")) {
       for (let i = 650; i < 721; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("7")) {
       for (let i = 722; i < 809; i++) {
         idList.push(i);
       }
+      genCount++;
     }
     if (generations?.includes("8")) {
       for (let i = 810; i < 898; i++) {
         idList.push(i);
       }
+      genCount++;
     }
+    setGenCounter(genCount);
     return shuffle(idList);
   };
 
@@ -100,6 +111,7 @@ function TriviaContextProvider({ children }: { children: ReactNode }) {
         score,
         questionsAnswered,
         questionsCorrect,
+        genCounter,
         setProfile,
         setGuestPopup,
         setScore,
